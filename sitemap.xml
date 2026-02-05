@@ -10,6 +10,9 @@
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/ai-overview.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/aio.html</loc>
   </url>
   <url>
@@ -29,6 +32,9 @@
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/ai-overview.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/aio.html</loc>
