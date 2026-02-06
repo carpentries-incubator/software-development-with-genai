@@ -18,6 +18,14 @@ exercises: 15 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Which of these describe an AI agent accurately?
+  1. Brain, Perception, Memory, and Action
+  2. AI agents operate independently, making their own rules and pursuing their own goals
+  3. AI agents are software systems designed to perform tasks with substantial human oversight.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints
 
