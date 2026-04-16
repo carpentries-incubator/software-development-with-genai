@@ -1,6 +1,18 @@
-# The Carpentries Workbench Template Markdown Lesson
+# Developing research software with Generative AI
 
-This lesson is a template lesson that uses [The Carpentries Workbench][workbench]. 
+This new lesson is a template lesson that uses [The Carpentries Workbench][workbench].
+
+Researchers will develop practical skills to enhance productivity, improve code quality, and apply AI responsibly in real-world research projects. 
+
+Building on foundational knowledge of large language models (LLMs) and AI coding assistants, this course focuses on the responsible and effective use of these tools for developing research software. The tools in this workshop include AI chatbots, integrated development environments (IDEs), and agentic workflows.
+
+By the end of this lesson, learners will be able to assess which tool or if any tool is needed for their purposes, use these tools, and evaluate their outputs.
+
+These training materials are based on the training materials developed by the Southampton Research Software Group. The development of this course was funded through the EPSRC Doctoral Landscape Award EP/Z534894/1 2025 additional skills funding underpinning the pipeline for AI skills.
+
+<!-- # The Carpentries Workbench Template Markdown Lesson
+
+
 
 ## Note about lesson life cycle stage
 Although the `config.yaml` states the life cycle stage as pre-alpha, **the template is stable and ready to use**. The life cycle stage is preset to `"pre-alpha"` as this setting is appropriate for new lessons initialised using the template.
@@ -81,4 +93,4 @@ complete the initial configuration of a new lesson repository built from this te
 [cff-home]: https://citation-file-format.github.io/
 [cff-sandpaper-docs]:  https://carpentries.github.io/sandpaper-docs/editing.html#making-your-lesson-citable
 [cffinit]: https://citation-file-format.github.io/cff-initializer-javascript/
-[workbench]: https://carpentries.github.io/sandpaper-docs/
+[workbench]: https://carpentries.github.io/sandpaper-docs/ -->
