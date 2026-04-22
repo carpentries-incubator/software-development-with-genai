@@ -1,6 +1,6 @@
 ---
 title: "Guiding agents from script to codebase"
-teaching: 10 # teaching time in minutes
+teaching: 50 # teaching time in minutes
 exercises: 2 # exercise time in minutes
 ---
 
@@ -12,13 +12,20 @@ exercises: 2 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how to use markdown with The Carpentries Workbench
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Understand how agentic AI coding tools work.
+- Implement supervision strategies for AI agents in coding tasks
+- Make use of version control by implementing Git and GitHub.
+- Use sandboxing and permission controls for safeguarding agent actions
+- Create a Living Spec (GEMINI.md) to guide an agent.
+- Extend the functionality of the script to convert it into a structured research codebase.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Introduction
 
+Spec-driven development. Requirements. Plan. Tests. Architecture.
+
+<!-- 
 This is a lesson created via The Carpentries Workbench. It is written in
 [Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
 [R Markdown][r-markdown] for dynamic files that can render code into output. 
@@ -111,4 +118,4 @@ Cool, right?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-[r-markdown]: https://rmarkdown.rstudio.com/
+[r-markdown]: https://rmarkdown.rstudio.com/ -->
