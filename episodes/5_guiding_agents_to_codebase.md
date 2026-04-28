@@ -12,10 +12,11 @@ exercises: 2 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Understand how agentic AI coding tools work.
-- Implement supervision strategies for AI agents in coding tasks
+- Explain how agentic AI coding tools work.
+- Relate identified risks of agentic methods to practical safeguards that mitigate them.
 - Make use of version control by implementing Git and GitHub.
-- Use sandboxing and permission controls for safeguarding agent actions
+- Implement supervision strategies for AI agents in coding tasks.
+- Use sandboxing and permission controls for safeguarding agent actions.
 - Create a Living Spec (GEMINI.md) to guide an agent.
 - Extend the functionality of the script to convert it into a structured research codebase.
 
