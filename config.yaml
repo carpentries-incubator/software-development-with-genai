@@ -18,7 +18,7 @@ carpentry: 'incubator'
 carpentry_description: 'Lesson Description'
 
 # Overall title for pages.
-title: 'Developing Software with Generative AI' 
+title: 'Developing Research Software with Generative AI' 
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: 2026-02-05 
@@ -66,8 +66,13 @@ contact: 'susan.mcclatchy@jax.org' # FIXME
 
 # Order of episodes in your lesson
 episodes: 
-- introduction.md
-- ai-overview.md
+- 1_prompting_effectively.md
+- 2_explain_clean_scripts.md
+- 3_writing_validate_scripts.md
+- 4_refactoring_testing_scripts.md
+- 5_guiding_agents_to_codebase.md
+- 6_reflecting_and_contributing.md
+- 7_resources_and_next_steps.md
 
 # Information for Learners
 learners: 
