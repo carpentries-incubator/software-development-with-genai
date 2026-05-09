@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/1_prompting_effectively.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/2_explain_clean_scripts.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/3_writing_validate_scripts.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/404.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/4_refactoring_testing_scripts.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/5_guiding_agents_to_codebase.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/6_reflecting_and_contributing.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/7_resources_and_next_steps.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/CODE_OF_CONDUCT.html</loc>
@@ -25,7 +46,28 @@
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/index.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/1_prompting_effectively.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/2_explain_clean_scripts.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/3_writing_validate_scripts.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/404.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/4_refactoring_testing_scripts.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/5_guiding_agents_to_codebase.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/6_reflecting_and_contributing.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/7_resources_and_next_steps.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/software-development-with-genai/instructor/CODE_OF_CONDUCT.html</loc>

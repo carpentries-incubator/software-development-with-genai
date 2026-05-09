@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Developing Software with Generative AI: All in One View</title>
+<title>Developing Research Software with Generative AI: All in One View</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="assets/themetoggle.js"></script><link rel="stylesheet" type="text/css" href="assets/styles.css">
 <script src="assets/scripts.js" type="text/javascript"></script><!-- mathjax --><!-- NOTE: https://docs.mathjax.org/en/latest/output/mathml.html#mathml-support --><!-- Changes from V2 to V4: https://mathjax.github.io/MathJax-demos-web/convert-configuration/convert-configuration.html
@@ -99,7 +99,7 @@
       <img class="small-logo" alt="Lesson Description" src="assets/images/incubator-logo-sm.svg">
 </div>
     <div class="lesson-title-md">
-      Developing Software with Generative AI
+      Developing Research Software with Generative AI
     </div>
     <div class="search-icon-sm">
       <!-- TODO: do not show until we have search
@@ -110,7 +110,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 <li class="nav-item">
           <span class="lesson-title">
-            Developing Software with Generative AI
+            Developing Research Software with Generative AI
           </span>
         </li>
         <li class="nav-item">
@@ -237,7 +237,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using Markdown</a>
+        <a href="1_prompting_effectively.html">1. Prompting effectively</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -249,7 +249,67 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="ai-overview.html">2. An Overview of Artificial Intelligence</a>
+        <a href="2_explain_clean_scripts.html">2. Explain and clean scripts</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush4">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading4">
+        <a href="3_writing_validate_scripts.html">3. Write and validate scripts</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush5">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading5">
+        <a href="4_refactoring_testing_scripts.html">4. Testing and refactoring scripts</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush6">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading6">
+        <a href="5_guiding_agents_to_codebase.html">5. Guiding agents from script to codebase</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush7">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading7">
+        <a href="6_reflecting_and_contributing.html">6. Reflecting and contributing</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush8">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading8">
+        <a href="7_resources_and_next_steps.html">7. Resources and next steps</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -312,11 +372,11 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>All in One View</h1>
         
-<section id="aio-introduction"><p>Content from <a href="introduction.html">Using Markdown</a></p>
+<section id="aio-1_prompting_effectively"><p>Content from <a href="1_prompting_effectively.html">Prompting effectively</a></p>
 <hr>
-<p>Last updated on 2025-12-18 |
+<p>Last updated on 2026-05-09 |
 
-        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/1_prompting_effectively.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -339,9 +399,10 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Explain how to use markdown with The Carpentries Workbench</li>
-<li>Demonstrate how to include pieces of code, figures, and nested
-challenge blocks</li>
+<li>Apply the CLEAR framework for effective prompting.</li>
+<li>Apply introspection to refine code.</li>
+<li>Employ prompt design patterns</li>
+<li>Recognise common generative AI failures</li>
 </ul>
 </div>
 </div>
@@ -351,144 +412,109 @@ challenge blocks</li>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
-<p>This is a lesson created via The Carpentries Workbench. It is written
-in <a href="https://pandoc.org/MANUAL.html" class="external-link">Pandoc-flavored Markdown</a>
-for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R
-Markdown</a> for dynamic files that can render code into output. Please
-refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The
-Carpentries Workbench</a> for full documentation.</p>
-<p>What you need to know is that there are three sections required for a
-valid Carpentries lesson:</p>
-<ol style="list-style-type: decimal">
-<li>
-<code>questions</code> are displayed at the beginning of the episode
-to prime the learner for the content.</li>
-<li>
-<code>objectives</code> are the learning objectives for an episode
-displayed with the questions.</li>
-<li>
-<code>keypoints</code> are displayed at the end of the episode to
-reinforce the objectives.</li>
-</ol>
-<div id="challenge-1-can-you-do-it" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?</h3>
-<div class="callout-content">
-<p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Output </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>[1] "This new lesson looks good"</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within
-challenge blocks?</h3>
-<div class="callout-content">
+<p>Prompt design patterns.</p>
+<!-- This is a lesson created via The Carpentries Workbench. It is written in
+[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
+[R Markdown][r-markdown] for dynamic files that can render code into output.
+Please refer to the [Introduction to The Carpentries
+Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
 
-</div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
-<div class="accordion-body">
-<p>You can add a line with at least three colons and a
-<code>solution</code> tag.</p>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a>
-</h2>
-<hr class="half-width">
-<p>You can use standard markdown for static figures with the following
-syntax:</p>
-<p><code>![optional caption that appears below the figure](figure url){alt='alt text for accessibility purposes'}</code></p>
-<figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">You belong in The Carpentries!</div>
-</figure><div id="callout1" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div class="callout-inner">
-<div class="callout-content">
-<p>Callout sections can highlight information.</p>
-<p>They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present “asides”: content that is
-not central to the narrative of the lesson, e.g. by providing the answer
-to a commonly-asked question.</p>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="math">Math<a class="anchor" aria-label="anchor" href="#math"></a>
-</h2>
-<hr class="half-width">
-<p>One of our episodes contains <span class="math inline">\(\LaTeX\)</span> equations when describing how to
-create dynamic reports with {knitr}, so we now use mathjax to describe
-this:</p>
-<p><code>$\alpha = \dfrac{1}{(1 - \beta)^2}$</code> becomes: <span class="math inline">\(\alpha = \dfrac{1}{(1 - \beta)^2}\)</span></p>
-<p>Cool, right?</p>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
-</ul>
-</div>
-</div>
-</div>
+What you need to know is that there are three sections required for a valid
+Carpentries lesson:
+
+ 1. `questions` are displayed at the beginning of the episode to prime the
+    learner for the content.
+ 2. `objectives` are the learning objectives for an episode displayed with
+    the questions.
+ 3. `keypoints` are displayed at the end of the episode to reinforce the
+    objectives.
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+Inline instructor notes can help inform instructors of timing challenges
+associated with the lessons. They appear in the "Instructor View"
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1: Can you do it?
+
+What is the output of this command?
+
+```r
+paste("This", "new", "lesson", "looks", "good")
+```
+
+:::::::::::::::::::::::: solution
+
+## Output
+
+```output
+[1] "This new lesson looks good"
+```
+
+:::::::::::::::::::::::::::::::::
+
+
+## Challenge 2: how do you nest solutions within challenge blocks?
+
+:::::::::::::::::::::::: solution
+
+You can add a line with at least three colons and a `solution` tag.
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Figures
+
+You can use standard markdown for static figures with the following syntax:
+
+`![optional caption that appears below the figure](figure url){alt='alt text for
+accessibility purposes'}`
+
+![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
+
+::::::::::::::::::::::::::::::::::::: callout
+
+Callout sections can highlight information.
+
+They are sometimes used to emphasise particularly important points
+but are also used in some lessons to present "asides":
+content that is not central to the narrative of the lesson,
+e.g. by providing the answer to a commonly-asked question.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Math
+
+One of our episodes contains $\LaTeX$ equations when describing how to create
+dynamic reports with {knitr}, so we now use mathjax to describe this:
+
+`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
+
+Cool, right?
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use `.md` files for episodes when you want static content
+- Use `.Rmd` files for episodes when you need to generate output
+- Run `sandpaper::check_lesson()` to identify any issues with your lesson
+- Run `sandpaper::build_lesson()` to preview your lesson locally
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+[r-markdown]: https://rmarkdown.rstudio.com/ -->
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-ai-overview"><p>Content from <a href="ai-overview.html">An Overview of Artificial Intelligence</a></p>
+</section></section><section id="aio-2_explain_clean_scripts"><p>Content from <a href="2_explain_clean_scripts.html">Explain and clean scripts</a></p>
 <hr>
-<p>Last updated on 2026-02-06 |
+<p>Last updated on 2026-05-09 |
 
-        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/ai-overview.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/2_explain_clean_scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -500,8 +526,8 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>What is generative AI?</li>
-<li>What is agentic AI?</li>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
 </ul>
 </div>
 </div>
@@ -511,48 +537,451 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Describe generative AI and agentic AI.</li>
-<li>
-</li>
+<li>Ask for explanations of a snippet of code to a chatbot.</li>
+<li>Analyse the explanations of a chatbot for understanding the
+snippet.</li>
+<li>Adapt the script to improve its clarity, modularity, and
+reusability.</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div id="which-of-these-describe-an-ai-agent-accurately" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<span class="callout-header">Discussion</span>
-<div id="which-of-these-describe-an-ai-agent-accurately" class="callout-inner">
-<h3 class="callout-title">Which of these describe an AI agent
-accurately?</h3>
-<div class="callout-content">
-<ol style="list-style-type: decimal">
-<li>Brain, Perception, Memory, and Action</li>
-<li>AI agents operate independently, making their own rules and pursuing
-their own goals</li>
-<li>AI agents are software systems designed to perform tasks with
-substantial human oversight.</li>
-</ol>
-</div>
-</div>
-</div>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Something “You can’t verify what you don’t understand”</p>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-3_writing_validate_scripts"><p>Content from <a href="3_writing_validate_scripts.html">Write and validate scripts</a></p>
+<hr>
+<p>Last updated on 2026-05-09 |
+
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/3_writing_validate_scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
 <ul>
-<li>Generative AI is …</li>
-<li>Agentic AI is ….</li>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
 </ul>
 </div>
 </div>
-</div></section>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Compare the functioning, scope, and risks of the IDE integrated LLM
+in relation to the chat-based LLM.</li>
+<li>Choose a generative AI tool for writing code according to the
+task.</li>
+<li>Write a snippet of code using generative AI directly in the
+IDE.</li>
+<li>Validate AI generated scripts using a critical framework (that the
+AI is doing the right thing)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Here, we will use an integrated LLM in an IDE.</p>
+<p>Tool selection Verification strategy Reproducibility recommendations
+Berkley lesson on validation</p>
+<!-- This is a lesson created via The Carpentries Workbench. It is written in
+[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
+[R Markdown][r-markdown] for dynamic files that can render code into output.
+Please refer to the [Introduction to The Carpentries
+Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
+
+What you need to know is that there are three sections required for a valid
+Carpentries lesson:
+
+ 1. `questions` are displayed at the beginning of the episode to prime the
+    learner for the content.
+ 2. `objectives` are the learning objectives for an episode displayed with
+    the questions.
+ 3. `keypoints` are displayed at the end of the episode to reinforce the
+    objectives.
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+Inline instructor notes can help inform instructors of timing challenges
+associated with the lessons. They appear in the "Instructor View"
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1: Can you do it?
+
+What is the output of this command?
+
+```r
+paste("This", "new", "lesson", "looks", "good")
+```
+
+:::::::::::::::::::::::: solution
+
+## Output
+
+```output
+[1] "This new lesson looks good"
+```
+
+:::::::::::::::::::::::::::::::::
+
+
+## Challenge 2: how do you nest solutions within challenge blocks?
+
+:::::::::::::::::::::::: solution
+
+You can add a line with at least three colons and a `solution` tag.
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Figures
+
+You can use standard markdown for static figures with the following syntax:
+
+`![optional caption that appears below the figure](figure url){alt='alt text for
+accessibility purposes'}`
+
+![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
+
+::::::::::::::::::::::::::::::::::::: callout
+
+Callout sections can highlight information.
+
+They are sometimes used to emphasise particularly important points
+but are also used in some lessons to present "asides":
+content that is not central to the narrative of the lesson,
+e.g. by providing the answer to a commonly-asked question.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Math
+
+One of our episodes contains $\LaTeX$ equations when describing how to create
+dynamic reports with {knitr}, so we now use mathjax to describe this:
+
+`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
+
+Cool, right?
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use `.md` files for episodes when you want static content
+- Use `.Rmd` files for episodes when you need to generate output
+- Run `sandpaper::check_lesson()` to identify any issues with your lesson
+- Run `sandpaper::build_lesson()` to preview your lesson locally
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+[r-markdown]: https://rmarkdown.rstudio.com/ -->
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-4_refactoring_testing_scripts"><p>Content from <a href="4_refactoring_testing_scripts.html">Testing and refactoring scripts</a></p>
+<hr>
+<p>Last updated on 2026-05-09 |
+
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/4_refactoring_testing_scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How to safely extend the functionality of a working script?</li>
+<li>How do I make sure that my code is still working when its size
+grows?</li>
+<li>How do I restructure my code so that it is readable, modular and
+reusable?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Develop a suite of tests that checks the correct functioning of the
+generated code.</li>
+<li>Evaluate the quality of the tests.</li>
+<li>Extend the functionality of the generated code by devising a plan
+and using test driven development.</li>
+<li>Modify the structure of the generated code to improve its quality
+without breaking its functionality.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Test-driven development <!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ --></p>
+</section></section><section id="aio-5_guiding_agents_to_codebase"><p>Content from <a href="5_guiding_agents_to_codebase.html">Guiding agents from script to codebase</a></p>
+<hr>
+<p>Last updated on 2026-05-09 |
+
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/5_guiding_agents_to_codebase.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Explain how agentic AI coding tools work.</li>
+<li>Relate identified risks of agentic methods to practical safeguards
+that mitigate them.</li>
+<li>Make use of version control by implementing Git and GitHub.</li>
+<li>Implement supervision strategies for AI agents in coding tasks.</li>
+<li>Use sandboxing and permission controls for safeguarding agent
+actions.</li>
+<li>Create a Living Spec (GEMINI.md) to guide an agent.</li>
+<li>Extend the functionality of the script to convert it into a
+structured research codebase.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Spec-driven development. Requirements. Plan. Tests. Architecture.</p>
+<!--
+This is a lesson created via The Carpentries Workbench. It is written in
+[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
+[R Markdown][r-markdown] for dynamic files that can render code into output.
+Please refer to the [Introduction to The Carpentries
+Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
+
+What you need to know is that there are three sections required for a valid
+Carpentries lesson:
+
+ 1. `questions` are displayed at the beginning of the episode to prime the
+    learner for the content.
+ 2. `objectives` are the learning objectives for an episode displayed with
+    the questions.
+ 3. `keypoints` are displayed at the end of the episode to reinforce the
+    objectives.
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+
+Inline instructor notes can help inform instructors of timing challenges
+associated with the lessons. They appear in the "Instructor View"
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+## Challenge 1: Can you do it?
+
+What is the output of this command?
+
+```r
+paste("This", "new", "lesson", "looks", "good")
+```
+
+:::::::::::::::::::::::: solution
+
+## Output
+
+```output
+[1] "This new lesson looks good"
+```
+
+:::::::::::::::::::::::::::::::::
+
+
+## Challenge 2: how do you nest solutions within challenge blocks?
+
+:::::::::::::::::::::::: solution
+
+You can add a line with at least three colons and a `solution` tag.
+
+:::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Figures
+
+You can use standard markdown for static figures with the following syntax:
+
+`![optional caption that appears below the figure](figure url){alt='alt text for
+accessibility purposes'}`
+
+![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
+
+::::::::::::::::::::::::::::::::::::: callout
+
+Callout sections can highlight information.
+
+They are sometimes used to emphasise particularly important points
+but are also used in some lessons to present "asides":
+content that is not central to the narrative of the lesson,
+e.g. by providing the answer to a commonly-asked question.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+## Math
+
+One of our episodes contains $\LaTeX$ equations when describing how to create
+dynamic reports with {knitr}, so we now use mathjax to describe this:
+
+`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
+
+Cool, right?
+
+::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use `.md` files for episodes when you want static content
+- Use `.Rmd` files for episodes when you need to generate output
+- Run `sandpaper::check_lesson()` to identify any issues with your lesson
+- Run `sandpaper::build_lesson()` to preview your lesson locally
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+[r-markdown]: https://rmarkdown.rstudio.com/ -->
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-6_reflecting_and_contributing"><p>Content from <a href="6_reflecting_and_contributing.html">Reflecting and contributing</a></p>
+<hr>
+<p>Last updated on 2026-05-09 |
+
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/6_reflecting_and_contributing.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Summarise the different generative AI tools, their scope, uses and
+precautions for its safe use.</li>
+<li>Compare your experience on the use of these tools with the
+experience of other users in the past.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Reflect on what you learned and share your experience with your
+peers!</p>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-7_resources_and_next_steps"><p>Content from <a href="7_resources_and_next_steps.html">Resources and next steps</a></p>
+<hr>
+<p>Last updated on 2026-05-09 |
+
+        <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/7_resources_and_next_steps.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>What other tools are available?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>List alternative AI coding tools.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>Design Apps Research agents <!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ --></p>
+</section></section>
 </div>
     </main>
 </div>
@@ -602,8 +1031,8 @@ substantial human oversight.</li>
   "url": "https://carpentries-incubator.github.io/software-development-with-genai/aio.html",
   "identifier": "https://carpentries-incubator.github.io/software-development-with-genai/aio.html",
   "dateCreated": "2026-02-05",
-  "dateModified": "2026-05-05",
-  "datePublished": "2026-05-05"
+  "dateModified": "2026-05-09",
+  "datePublished": "2026-05-09"
 }
 
   </script><script>
