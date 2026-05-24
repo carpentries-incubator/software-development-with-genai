@@ -36,3 +36,12 @@ As opposed to
 
 [workbench]: https://carpentries.github.io/sandpaper-docs
 
+# Credits
+
+These training materials were partially adapted from the materials developed by
+
+- Southampton Research Software Group. The development of their [course](https://southampton-rsg-training.github.io/research-software-ai-tools/) was funded through the EPSRC Doctoral Landscape Award EP/Z534894/1 2025 additional skills funding underpinning the pipeline for AI skills.
+- Tim Dennis - UCLA Library Data Science Center. Course: [Agentic Research Workflows: AI and Validation](https://www.tim-dennis.com/vibe-coding-lesson/)
+- The course [Responsible Use of Generative AI in Assisted Coding](https://coderefinery.github.io/coding-with-ai/) from the CodeRefinery training activities. The initial draft of that lesson came from the workshop “AI and Research Work” (Glerean & Silva, 2024). The materials were originally written by Enrico Glerean, and further expanded and discussed by Bjørn Lindi, Ina Pöhner, Jarno Rantaharju, Simon Christ, Ashwin V. Mohanan, Michele Mesiti, Frankie Robertson.
+
+The data is based on free material from GAPMINDER.ORG, CC-BY LICENSE.
