@@ -148,6 +148,24 @@ In groups of three, talk about how you usually prompt.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+::::::::::::::::::::::::::::::::: callout
+
+## Writing Good Chat Prompts
+
+AI tools work best with context, so it's good to be as specific and concise as possible.
+
+It's also a good idea to provide simple questions,
+so if you end up with a large question that is decomposable into separate steps,
+ask each step separately and you'll typically get a better outcome.
+This implies that it's good to use a logical, iterative process of using AI to assist,
+using responses to simple questions to inform the next question, and so on.
+
+There's a very useful cheat sheet developed by Northwestern University (US) Research Computing and Data Services,
+which can be found in their [GitHub promptEngineering repository](https://github.com/nuitrcs/promptEngineering).
+
+:::::::::::::::::::::::::::::::::::::::::
+
 ## The CLEAR framework
 
 The CLEAR framework, developed by [Leo Lo](https://doi.org/10.1016/j.acalib.2023.102720), provides a structured approach to prompt engineering:
