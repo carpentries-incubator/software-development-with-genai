@@ -198,8 +198,8 @@ Prompt:
 
 ```text
 [C] Concise:
-I have a Python script, `code.py`, and three datasets:
-`co2_per_capita.csv`, `life_expectancy.csv`, and `gdp_per_capita.csv`.
+I have a Python script, `code.py`, and two datasets:
+`co2_per_capita.csv` and `gdp_per_capita.csv`.
 
 [L] Logical:
 I want to execute the code for each dataset.
