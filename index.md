@@ -43,7 +43,16 @@ Software can work, as in compiling and executing, but that does not mean that it
 | Guiding agents from script to codebase | AI Agent | Copilot, Codex, Claude Code, OpenCode |
 
 
-[workbench]: https://carpentries.github.io/sandpaper-docs
+::::::::::::::::::::::::::::::::::::: callout
+
+## Which tools are most commonly used by researchers?
+
+In a study of 868 scientists who code as part of their research, ChatGPT was by far the most common tool used to assist with research coding, used by 64% of participants, followed by GitHub Copilot, used by 12% of participants. 
+
+*(O'Brien, G., Parker, A., Eisty, N., & Carver, J. (2025). More code, less validation: Risk factors for over-reliance on AI coding tools among scientists. arXiv preprint arXiv:2512.19644.)*
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Credits
 
