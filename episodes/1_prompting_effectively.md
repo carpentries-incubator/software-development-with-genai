@@ -37,41 +37,41 @@ Write and execute a prompt for running the code in all the datasets.
 A possible prompt is:
 
 ```text
-Hey, I have this code "code.py" and three datasets "data1.csv", "data2.csv", and "data3.csv", please write the code to run the code in each dataset.
+Hey, I have this code "code.py" and two datasets "data1.csv" and "data2.csv", please write the code to run the code in each dataset.
 ```
 
 Notice that you can communicate the same intention in many other ways. Similarly, because the response of these models is not deterministic, you will receive different results even if you use the same prompt in the same model! In our case, using ChatGPT on May 10th, 2026, we received this answer:
 
-```python
-import subprocess
-
-# List of datasets
-datasets = ["data1.csv", "data2.csv", "data3.csv"]
-
-# Run code.py for each dataset
-for dataset in datasets:
-    print(f"Running code.py with {dataset}...")
-    
-    subprocess.run(
-        ["python", "code.py", dataset],
-        check=True
-    )
-
-print("All datasets processed.")
-```
-
-_This assumes that `code.py` accepts the dataset filename as a command-line argument, for example:_
-
-```python
-# inside code.py
-import sys
-
-dataset_path = sys.argv[1]
-
-print(f"Processing {dataset_path}")
-```
-
-_You can run the launcher script with:_
+>```python
+>import subprocess
+>
+># List of datasets
+>datasets = ["data1.csv", "data2.csv"]
+>
+># Run code.py for each dataset
+>for dataset in datasets:
+>    print(f"Running code.py with {dataset}...")
+>    
+>    subprocess.run(
+>        ["python", "code.py", dataset],
+>        check=True
+>    )
+>
+>print("All datasets processed.")
+>```
+>
+>_This assumes that `code.py` accepts the dataset filename as a command-line argument, for example:_
+>
+>```python
+># inside code.py
+>import sys
+>
+>dataset_path = sys.argv[1]
+>
+>print(f"Processing {dataset_path}")
+>```
+>
+>_You can run the launcher script with:_
 
 ```bash
 python run_all.py
@@ -87,52 +87,51 @@ Prompt:
 Hey, I have this code "code.py" and three datasets "data1.csv", "data2.csv", and "data3.csv", please help me execute the code in each dataset.
 ```
 
-Output:
+AI Response:
 
-_If `code.py` accepts a dataset file as an argument, the simplest way is usually:_
-
-```bash
-python code.py data1.csv
-python code.py data2.csv
-python code.py data3.csv
-```
-
-_Or automate it with a small shell loop:_
-
-```bash
-for file in data1.csv data2.csv data3.csv
-do
-    python code.py "$file"
-done
-```
-
-_If your `code.py` instead expects named arguments, it could look like:_
-
-```bash
-python code.py --input data1.csv
-```
-
-_in which case the loop becomes:_
-
-```bash
-for file in data1.csv data2.csv data3.csv
-do
-    python code.py --input "$file"
-done
-```
-
-_You can also do it directly inside Python:_
-
-```python
-import subprocess
-
-datasets = ["data1.csv", "data2.csv", "data3.csv"]
-
-for dataset in datasets:
-    subprocess.run(["python", "code.py", dataset])
-```
-
-_If you paste the contents of `code.py`, I can give you the exact command for your specific script._
+> _If `code.py` accepts a dataset file as an argument, the simplest way is usually:_
+>
+> ```bash
+> python code.py data1.csv
+> python code.py data2.csv
+> ```
+>
+> _Or automate it with a small shell loop:_
+>
+> ```bash
+> for file in data1.csv data2.csv
+> do
+>     python code.py "$file"
+> done
+> ```
+>
+> _If your `code.py` instead expects named arguments, it could look like:_
+>
+> ```bash
+> python code.py --input data1.csv
+> ```
+>
+> _in which case the loop becomes:_
+>
+> ```bash
+> for file in data1.csv data2.csv 
+> do
+>     python code.py --input "$file"
+> done
+> ```
+>
+> _You can also do it directly inside Python:_
+>
+> ```python
+> import subprocess
+>
+> datasets = ["data1.csv", "data2.csv"]
+>
+> for dataset in datasets:
+>     subprocess.run(["python", "code.py", dataset])
+> ```
+>
+> _If you paste the contents of `code.py`, I can give you the exact command for your specific script._
 
 :::::::::::::::::::::::::::::::::
 
@@ -143,7 +142,6 @@ Notice that the response of the LLM usually finishes by asking for more context,
 In groups of three, talk about how you usually prompt.
 
 - What works for you? What errors or mistakes have you caught?
-- What differences did you find in your prompts before and after applying the CLEAR framework?
 - Did the model's response improve?
 
 :::::::::::::::::::::::::::::::::::::::::::::::::
@@ -227,6 +225,28 @@ This serves as illustration of the CLEAR framework, but you will tailor your pro
 
 :::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::: challenge
+
+## Challenge 3: Minimal-change prompt
+
+Take your refined prompt from Challenge 2 and make the smallest possible change so the model now
+produces a script that combines multiple CSVs and plots the combined data (e.g., merge CO2 and GDP
+by country and year, then plot them together). Keep everything else in your prompt unchanged.
+
+::::::::::::::::::::::::::::
+
+:::::::::::::::::::: solution
+
+One minimal change is to replace the "run for each dataset" line with a "combine and plot" line:
+
+```text
+[L] Logical:
+I want to load both datasets, merge them by country and year, and plot the combined data in one
+figure.
+```
+
+::::::::::::::::::::::::::::
+
 ## Introspection
 
 The CLEAR framework guides your input, but you can also force the AI to critique its own output. This is often called self-correction.
@@ -239,7 +259,7 @@ Emphasize this section. Most learners treat AI output as final. The idea that th
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-AI models are often better at verifying code than writing it. Never accept the first draft. Follow up with an introspection prompt:
+AI models are often better at verifying code than writing it. Never accept the first draft. It is often better to use a different model, or at least a new chat, for the review so the critique is less influenced by the same context that produced the code. Follow up with an introspection prompt:
 
 - "Review the code you just wrote. Are there any edge cases or security vulnerabilities?"
 - "Did you hardcode any file paths?"
@@ -247,7 +267,7 @@ AI models are often better at verifying code than writing it. Never accept the f
 
 :::::::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge: The introspection loop
+## Challenge 4: The introspection loop
 
 Test the AI as a verifier principle. Ask the AI to find flaws in its code before you run it.
 
@@ -268,13 +288,13 @@ Test the AI as a verifier principle. Ask the AI to find flaws in its code before
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 :::::::::::::::::::::::::::::::::::::::: solution
 
-AI models are often more accurate when asked to critique logic than when asked to generate it. This second pass is part of the editor mindset and reduces manual debugging.
+AI models are often more accurate when asked to critique logic than when asked to generate it. This second pass is part of the editor mindset and reduces manual debugging, but it does not replace a human checking the code to make sure it does the right thing.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Prompt patterns - Plan before you act
 
-As tasks grow more complex, asking the agent to write code immediately leads to more rewrite time. The emerging best practice is to request a plan first, review it, and approve it before any files are written.
+As tasks grow more complex, asking the model to write code immediately leads to more rewrite time. The emerging best practice is to request a plan first, review it, and approve it before any files are written.
 
 ### The think-then-do pattern
 
@@ -329,9 +349,33 @@ Review the plan. Does it include an audit step? Does it address missing values? 
 - A missing value strategy
 - An output verification step
 
-If the agent skipped any of these, ask it to revise before you proceed. The goal is to catch gaps in the plan, not in the code.
+If the model skipped any of these, ask it to revise before you proceed. The goal is to catch gaps in the plan, not in the code.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::: challenge
+
+## Challenge: Plan ownership reflection
+
+Write a short reflection (3-5 sentences) on your responsibility when asking a model to plan. Use
+these prompts:
+
+- What domain knowledge do you need to judge whether a plan is reasonable?
+- What parts of the plan would you *not* be able to critique without that knowledge?
+- How would you verify or fill those gaps before letting the model implement the plan?
+
+::::::::::::::::::::::::::::
+
+:::::::::::::::::::: solution
+
+## One possible reflection
+
+I need enough domain knowledge to judge whether the steps are valid and complete. Without that
+knowledge, I would not know if the plan skips a critical audit step or uses the wrong data
+assumptions. Before implementation, I should consult documentation, run small checks, or ask a
+subject expert so I can meaningfully critique the plan and adjust it.
+
+::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::: callout
 There are more patterns that can be used to guide LLMs. See [Prompt Pattern Catalog to Enhance Prompt Engineering](https://arxiv.org/pdf/2302.11382)
