@@ -2,9 +2,11 @@
 site: sandpaper::sandpaper_site
 ---
 
-Welcome to this lesson on the use of generative AI for developing research software. For illustrating these concepts in a tangible manner, we introduce here the story of Helen.
+# Introduction
 
-She is a researcher who just started working with a new research group, she inherits some data and code from a colleague who just left the group. Her task is to now integrate a new qualitative dataset (interviews or personal information) to the quantitative analysis.
+Welcome to this lesson on the use of generative AI for developing research software. 
+
+For illustrating these concepts in a tangible manner, we introduce here the story of Helen. She is a researcher who just started working with a new research group, she inherits some data and code from a colleague who just left the group. Her task is to now integrate a new qualitative dataset (interviews or personal information) to the quantitative analysis.
 
 However, she soon realises that the code that the previous colleague did is a messy state. It is not readable, documented, tested, or commented.
 
@@ -18,7 +20,7 @@ Building on foundational knowledge of large language models (LLMs) and AI coding
 
 By the end of this lesson, learners will be able to assess which tool or if any tool is needed for their purposes, use these tools, and evaluate their outputs.
 
-These training materials are based on the training materials developed by the Southampton Research Software Group. The development of this course was funded through the EPSRC Doctoral Landscape Award EP/Z534894/1 2025 additional skills funding underpinning the pipeline for AI skills.
+This lesson is divided into five content episodes which focus on the skills that are needed to produce high quality research software and that are upskilled by integrating generative AI tools. In addition, we include two episodes that allow you to gain and share experience from the use with these tools (episode 6 - Reflecting and contributing) and discover your next steps (episode 7 - Resources and next steps).
 
 ## Research software: How is it different to regular software?
 
@@ -28,15 +30,22 @@ We typically think about software as a mean to define a process that transforms 
 
 Software can work, as in compiling and executing, but that does not mean that it is understandable, reusable, or correct. In the context of research software, the lack of these characteristics directly hinder the progress and quality of scientific endevours.
 
-As opposed to 
+(continue...)
 
 ## Generative AI tools for research software
 
+| Episode | Main tool | Examples |
+| --- | --- | --- |
+| Prompting effectively |  Chatbot | ChatGPT, Claude, duck.ai, Ollama  |
+| Explain and clean scripts | Chatbot | ChatGPT, Claude, duck.ai, Ollama |
+| Writing and validating scripts | IDE | Visual Studio Code, Cursor, Windsurf, Zed |
+| Testing and refactoring scripts | IDE | Visual Studio Code, Cursor, Windsurf, Zed |
+| Guiding agents from script to codebase | AI Agent | Copilot, Codex, Claude Code, OpenCode |
 
 
 [workbench]: https://carpentries.github.io/sandpaper-docs
 
-# Credits
+## Credits
 
 These training materials were partially adapted from the materials developed by
 
