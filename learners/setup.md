@@ -146,12 +146,6 @@ bash Anaconda3-2025.12-2-Linux-x86_64.sh
 Answer ‘yes’ to allow the installer to initialize Anaconda3 in your .bashrc.
 ::::::::::::::::::::::::
 
-### Microsoft Visual Studio Code
-
-The hands-on part of this topic will be conducted using Visual Studio Code (VS Code), a widely used IDE.
-Please [download the appropriate version of Visual Studio Code][https://code.visualstudio.com/] for your operating system (Windows, macOS, or Linux)
-and system architecture (e.g., 64-bit, ARM).
-
 ### Additional Git Setup
 
 #### Setting up Git
@@ -247,3 +241,79 @@ ssh-ed25519 <SNIPPED FOR SECURITY> user-name@computer-name
 ```
 
 **Make sure you copy the .pub file and not the private key!** Your private key lives on your machine and is never shared with anyone else. Then click Add key, and you’re done!
+
+### Microsoft Visual Studio Code
+
+The hands-on part of this topic will be conducted using Visual Studio Code (VS Code), a widely used IDE.
+Please [download the appropriate version of Visual Studio Code][https://code.visualstudio.com/] for your operating system (Windows, macOS, or Linux)
+and system architecture (e.g., 64-bit, ARM).
+
+## Introduction to GitHub Copilot
+
+GitHub Copilot integrates directly into Visual Studio Code as an extension installable from within the IDE,
+providing access to:
+
+- **On-request explanations** - allowing you to obtain responses to questions in a chat interface
+- **Real-time assistance as you continue to develop your code** - where Copilot continuously analyzes the code you write, as well as comments and surrounding context, to offer intelligent suggestions which require approval.
+- **On-request direct code modification** - by requesting specific changes, your code is modified directly by Copilot (again, requiring specific approval before it integrates the suggested changes)
+
+All of this is integrated into the VSCode editor, so you do not need to leave your development environment.
+
+### The Lifecycle of a Copilot Prompt
+
+So how does Copilot integrate with VSCode, and how does it handle data?
+Let's look at how it creates a code suggestion as an example:
+
+![Lifecycle of a Copilot prompt](fig/copilot-prompt-lifecycle.png)
+
+At a high level, the following steps are followed:
+
+Within the Copilot-enabled IDE:
+
+1. Developer enters text into code editor, such as VSCode, gathering context from a number of sources (code before and after cursor, file name and type, other open editor tabs)
+2. The prompt is constructed from the amassed context and sent to the Copilot proxy
+
+Within the Copilot proxy (within the "Cloud"):
+
+3. Filters the requests, terminating those involving toxic language, unrelated code requests, and perceived hacking attempts.
+The prompt is sent to the GitHub Copilot LLM
+
+The Copilot LLM (also in the "Cloud"):
+
+4. Receives the request and formulates a code suggestion which is sent back to the proxy
+
+Back within the Copilot proxy:
+
+5. Receives the response, and tests code suggestions for code vulnerabilities, truncating responses that contain unique identifiers (such as email addresses, GitHub URLs, IP addresses, etc.), and filters out those matching known public code. The processed response is fed back to the Copilot client within the IDE
+
+Back within the Copilot-enabled IDE:
+
+6. The Copilot extension receives the code suggestion which is presented to the user to accept or reject
+
+GitHub provides further detailed information about [how GitHub Copilot handles data](https://resources.github.com/learn/pathways/copilot/essentials/how-github-copilot-handles-data/).
+
+### Different Models
+
+GitHub Copilot's free tier provides access to multiple large language models, each with different strengths and tradeoffs.
+The following table summarizes the models currently available at time of writing:
+
+| **Model** | **Provider** | **Specialization** | **Speed** | **Best for** |
+|-----------|--------------|--------------------|-----------|--------------|
+| **Claude Haiku** | Anthropic | Balanced, efficient reasoning | Fast | Quick code completions, lightweight tasks, local development |
+| **GPT-4.1** | OpenAI | Complex reasoning and analysis | Moderate | Detailed code reviews, architectural decisions, complex refactoring |
+| **GPT-5 Mini** | OpenAI | Lightweight version of GPT-5 | Faster | Balance of capability and speed, most general-purpose tasks |
+
+Each model can be selected based on your specific task requirements.
+For routine coding tasks, lighter models like Claude Haiku or GPT-5 Mini may be sufficient and faster, while more complex problems may benefit from the deeper reasoning of GPT-4.1.
+
+There are many [other models available](https://docs.github.com/en/copilot/get-started/plans#models) for use within various priced priced tiers,
+including other models from OpenAI and Anthropic, as well as models from Google (i.e. Gemini).
+Some of these e.g. GPT-5-Codex have been further optimised for writing code and other software engineering tasks.
+You can also find a [comparison of these models](https://docs.github.com/en/copilot/reference/ai-models/model-comparison).
+
+### Limitations of the Copilot Free Tier
+
+There are two key quotas which are reset per month to be aware of (which we'll look into during the practical elements of the course):
+
+- **Inline suggestions** - 2000 completions per month, essentially where Copilot provides suggestions as you type
+- **Premium requests** - 50 per month, where you use more advanced AI features, such as Copilot chat requests or advanced reasonsing models
