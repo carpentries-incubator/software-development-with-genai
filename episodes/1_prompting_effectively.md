@@ -251,7 +251,7 @@ AI models are often better at verifying code than writing it. Never accept the f
 
 Test the AI as a verifier principle. Ask the AI to find flaws in its code before you run it.
 
-1. **Generate a script** — type this prompt in your chat
+1. **Generate a script** — enter this prompt in your chat
 
 ```text
     Write a script that reads 'gdp_per_capita.csv' and generates a timeseries of the 10 years rolling average for a country that is passed as argument in the terminal. Handle missing values.
