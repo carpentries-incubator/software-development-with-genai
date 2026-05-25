@@ -280,7 +280,7 @@ This is especially valuable in research because it catches misunderstandings abo
 
 ### The plan file
 
-For complex projects, ask the agent to write a `PLAN.md` first:
+For complex projects, ask the model to write a `PLAN.md` first:
 
 ```text
 Write a PLAN.md outlining the steps to clean and merge these files. I will review and edit it before you write any code.
