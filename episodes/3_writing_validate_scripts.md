@@ -35,6 +35,10 @@ exercises: 4 # exercise time in minutes
 
 Helen has cleaned the inherited script and now wants to extend it with a sensitive survey dataset. She needs to merge country-level environmental and economic concern data with CO2 and GDP per capita, and plot two new scatter plots. She shifts from chat-based prompting to an IDE-integrated assistant, but to do this safely, she decides to do this only after sandboxing the project and restrict what the tool can see.
 
+The new file, `survey_participants.csv`, contains information about 100 researchers with direct identifiers
+(names and emails), demographics (age, gender, nationality, institution, department, income band),
+and survey responses on AI tools, data sharing, open science, and concern levels.
+
 ## The IDE integration scenario
 
 In this scenario, AI assistance is integrated directly into your development
