@@ -4,13 +4,26 @@ site: sandpaper::sandpaper_site
 
 # Introduction
 
-Welcome to this lesson on the use of generative AI for developing research software. 
+Welcome to this lesson on the use of generative AI for developing research software.
+
+Software is critical to research - the Software Sustainability Institute's UK Research Software Survey found that more than 92% of academics use research software, and 56% write their own code.
+A study also conducted by the Institute also found an exponential increase in the prevalence of software-related terms in publications between 2000-2017.
+
+![Percentage of research publications with software-related terms 2000-2017, S.J.Hettrick](fig/software-terms-publications.png)
+
+As a specific institutional example, when researchers were asked "how important is research software to your work?" in a software study conducted at the University of Southampton, 73% of respondents indicated that it was "Vital".
+
+For many researchers, writing code for data analysis or software development can be boring, frustrating, or intimidating. 
+Most researchers would rather be thinking about and researching their subject matter rather than spending lots of time learning a programming language and writing code.
+Therefore, with easy access to AI tools, it can be very tempting to ask AI to write your research code for you.
+
+![Artwork by @allison_horst, CC-BY](fig/i_would_rather_not_behold.png){alt='Cartoon of an instructor gesturing enthusiastically to a screen full of R documentation saying "BEHOLD! An amazing function!" A skeptical looking student looks on, saying "I would rather not behold...'}
 
 For illustrating these concepts in a tangible manner, we introduce here the story of Helen. She is a researcher who just started working with a new research group, she inherits some data and code from a colleague who just left the group. Her task is to now integrate a new qualitative dataset (interviews or personal information) to the quantitative analysis.
 
 However, she soon realises that the code that the previous colleague did is a messy state. It is not readable, documented, tested, or commented.
 
-Given this additional challenge, Helen knows that additional effort is required to bring this code up to good standard in order to build on top of it and do her job. She knows that there are some resear
+Given this additional challenge, Helen knows that additional effort is required to bring this code up to good standard in order to build on top of it and do her job.
 
 ## Overview
 
@@ -22,15 +35,6 @@ By the end of this lesson, learners will be able to assess which tool or if any 
 
 This lesson is divided into five content episodes which focus on the skills that are needed to produce high quality research software and that are upskilled by integrating generative AI tools. In addition, we include two episodes that allow you to gain and share experience from the use with these tools (episode 6 - Reflecting and contributing) and discover your next steps (episode 7 - Resources and next steps).
 
-## Research software: How is it different to regular software?
-
-Software is a collection of instructions, data, or programs used to operate computers and execute specific tasks.
-
-We typically think about software as a mean to define a process that transforms or processes information.
-
-Software can work, as in compiling and executing, but that does not mean that it is understandable, reusable, or correct. In the context of research software, the lack of these characteristics directly hinder the progress and quality of scientific endevours.
-
-(continue...)
 
 ## Generative AI tools for research software
 
