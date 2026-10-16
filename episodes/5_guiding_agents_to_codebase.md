@@ -4,119 +4,169 @@ teaching: 50 # teaching time in minutes
 exercises: 2 # exercise time in minutes
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+::::::::::::::::::::::::::::::::: questions
 
-- How do you write a lesson using Markdown and `{sandpaper}`?
+- How do agentic tools help move from a script to a shareable codebase?
+- How do you supervise agent work with specs, plans, and Pull Request reviews?
+- How do you reduce risk with sandboxing and permission controls?
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: objectives
+:::::::::::::::::::::::::::::::: objectives
 
 - Explain how agentic AI coding tools work.
 - Relate identified risks of agentic methods to practical safeguards that mitigate them.
 - Make use of version control by implementing Git and GitHub.
 - Implement supervision strategies for AI agents in coding tasks.
 - Use sandboxing and permission controls for safeguarding agent actions.
-- Create a Living Spec (GEMINI.md) to guide an agent.
+- Create a Living Spec (AGENTS.md) to guide an agent.
 - Extend the functionality of the script to convert it into a structured research codebase.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
 
 ## Introduction
 
-Spec-driven development. Requirements. Plan. Tests. Architecture.
+Helen has turned a growing script into multiple files with a test suite, but it still lives on her
+laptop. Her team wants a shareable codebase with documentation, licensing, and collaboration
+workflows. She now works on a remote Linux server with only a terminal, so she uses a CLI agent and
+Git to scale the work safely.
 
-<!-- 
-This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
-[R Markdown][r-markdown] for dynamic files that can render code into output. 
-Please refer to the [Introduction to The Carpentries 
-Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
+This episode focuses on agentic workflows: define a spec, approve a plan, execute in small branches,
+and review changes before they land on `main`.
 
-What you need to know is that there are three sections required for a valid
-Carpentries lesson:
+:::::::::::::::::::::::::::::::: callout
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+## A safe default for agentic work
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+Start with the smallest possible permissions, a clear spec, and a plan you approve. Make changes in
+branches, not directly on `main`.
 
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
+:::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+## The agentic workflow
 
-::::::::::::::::::::::::::::::::::::: challenge 
+An agent is most useful when you give it a clear target and enforce a review gate:
 
-## Challenge 1: Can you do it?
+1. **Spec:** Capture the goals, constraints, and data sensitivity in a Living Spec.
+2. **Plan:** Ask the agent for a plan and edit it before work begins.
+3. **Branches:** Each task is done in a small branch.
+4. **Review:** Open a pull request (PR), review changes, and merge only when checks pass.
 
-What is the output of this command?
+## Create a Living Spec (AGENTS.md)
 
-```r
-paste("This", "new", "lesson", "looks", "good")
+A Living Spec is a short file that tells the agent what it can and cannot do. It should include
+purpose, scope, data constraints, and what counts as "done."
+
+Example outline:
+
+```
+# Living Spec
+- Purpose: Describe the research question and expected outputs.
+- Scope: List the modules/files the agent may change.
+- Data sensitivity: Explain any sensitive datasets and access rules.
+- Quality checks: Tests to run or outputs to verify.
+- Collaboration rules: Branch + PR workflow, no direct commits to main.
 ```
 
-:::::::::::::::::::::::: solution 
+:::::::::::::::::::::::::::::::: challenge
 
-## Output
- 
-```output
-[1] "This new lesson looks good"
-```
+## Challenge 1: Draft a Living Spec
 
-:::::::::::::::::::::::::::::::::
+Create a short Living Spec for this project. Include at least: purpose, scope, data handling rules,
+and a review rule (e.g., "all changes must go through PRs").
 
+:::::::::::::::::::: solution
 
-## Challenge 2: how do you nest solutions within challenge blocks?
+## Solution
 
-:::::::::::::::::::::::: solution 
+A good spec is brief and explicit: it names the project goals, lists the files the agent may change,
+explains how to handle sensitive data, and sets a review gate (branch + PR).
 
-You can add a line with at least three colons and a `solution` tag.
+::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
+## Plan before executing
 
-## Figures
+Before you let the agent make changes, ask it to draft a plan and break the work into small tasks.
+You should edit the plan to make sure each task is reviewable on its own.
 
-You can use standard markdown for static figures with the following syntax:
+:::::::::::::::::::::::::::::::: challenge
 
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
+## Challenge 2: Plan and task breakdown
 
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
+Ask the agent for a plan to add a README, CONTRIBUTING guide, LICENSE, and requirements file. Edit
+the plan so each item is a separate task that could be reviewed in a single PR.
 
-::::::::::::::::::::::::::::::::::::: callout
+:::::::::::::::::::: solution
 
-Callout sections can highlight information.
+## Solution
 
-They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present "asides": 
-content that is not central to the narrative of the lesson,
-e.g. by providing the answer to a commonly-asked question.
+A clean plan typically splits into 3-5 tasks: README, LICENSE, CONTRIBUTING, environment or
+requirements, and a short tutorial or example. Each task maps to a branch and PR.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
 
+## Branching and PR-based supervision
 
-## Math
+Git is your supervision tool. You can keep the agent productive while still controlling quality by
+requiring small branches and reviewable PRs.
 
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
+Suggested branching pattern:
 
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
+- `docs/readme`
+- `docs/contributing`
+- `chore/license`
+- `build/requirements`
+- `docs/tutorial`
 
-Cool, right?
+:::::::::::::::::::::::::::::::: challenge
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+## Challenge 3: Build a PR checklist
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+Write a short PR checklist you will use to review agent changes. Include at least: scope alignment,
+tests or checks, and documentation quality.
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::: solution
 
-[r-markdown]: https://rmarkdown.rstudio.com/ -->
+## Solution
+
+A minimal checklist includes: the PR matches the spec, tests (if any) pass, and the new docs are
+clear and consistent with the rest of the repo.
+
+::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
+
+## Safeguards: permissions, sandboxing, secrets hygiene
+
+Agentic tools are powerful because they can read and change files. Keep risk low by using the
+smallest possible scope:
+
+- **Permissions:** start read-only and expand only if needed.
+- **Sandboxing:** keep sensitive data inside the workspace.
+- **Secrets hygiene:** never provide tokens or credentials to the agent.
+- **Audit trail:** use branches + PRs so every change is visible.
+
+:::::::::::::::::::::::::::::::: challenge
+
+## Challenge 4: Add a safeguard
+
+Identify one risky agent action in your workflow and add a safeguard that prevents it.
+
+:::::::::::::::::::: solution
+
+## Solution
+
+For example, if the agent might edit files outside the project, restrict the scope to specific
+folders and require PR reviews before merging.
+
+::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::: keypoints
+
+- Agentic workflows are safest with a spec, a plan, and PR-based review gates.
+- Living Specs clarify goals, limits, and data constraints for the agent.
+- Permission scoping, sandboxing, and secrets hygiene reduce risk without blocking progress.
+
+:::::::::::::::::::::::::::::::::::::::::::
