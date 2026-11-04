@@ -1,0 +1,101 @@
+participant_id,first_name,last_name,age,gender,country,institution,department,income_bracket_eur,email,survey_q1_ai_tools_useful,survey_q2_data_sharing_comfort,survey_q3_open_science_support,survey_q4_environmental_concern_ai,survey_q5_economic_concern_ai
+P001,Marek,Nowak,41,Male,Poland,Akademia Wiślańska,Psychology,40000-60000,m.nowak@awislanska.pl,Neutral,Strongly agree,Neutral,5,4
+P002,Marco,Esposito,48,Male,Italy,Istituto Superiore di Valdorne,Urban Planning,60000-80000,m.esposito@valdorne.it,Agree,Strongly disagree,Agree,5,1
+P003,Ingrid,Larsson,37,Female,Norway,Fjordheim University,Political Science,60000-80000,i.larsson@fjordheim.no,Strongly agree,Neutral,Agree,4,1
+P004,Valentina,Herrera,49,Female,Colombia,Universidad del Magdalena Central,Demography,40000-60000,v.herrera@umagdalena.edu.co,Disagree,Strongly disagree,Disagree,3,4
+P005,Carlo,Reyes,48,Male,Philippines,Laguna Pacific University,Education Sciences,>80000,c.reyes@lpu.edu.ph,Strongly agree,Agree,Agree,2,1
+P006,Carlos,Mendes,35,Male,Brazil,Instituto Federal de Pesquisa Amazônica,Political Economy,20000-40000,c.mendes@ifpa.edu.br,Strongly agree,Neutral,Agree,5,3
+P007,Maja,Svensson,56,Female,Sweden,Björnholm University,Urban Planning,>80000,m.svensson@bjornholm.se,Neutral,Disagree,Agree,5,4
+P008,Miriam,Fonseca,49,Female,Portugal,Universidade de Mondego,Science & Technology Studies,20000-40000,m.fonseca@umondego.pt,Neutral,Strongly agree,Strongly agree,2,4
+P009,Beatriz,Oliveira,45,Female,Brazil,Universidade do Rio Claro,Technology Policy,40000-60000,b.oliveira@urioclaro.br,Strongly agree,Disagree,Agree,3,5
+P010,Daan,Janssen,37,Male,Netherlands,Westerdijk University,Psychology,40000-60000,d.janssen@wdu.nl,Strongly agree,Neutral,Agree,3,4
+P011,Sven,Eriksson,55,Male,Sweden,Björnholm University,Technology Policy,>80000,s.eriksson@bjornholm.se,Agree,Disagree,Strongly agree,1,3
+P012,Femke,van der Berg,34,Female,Netherlands,Rijnland Institute,Anthropology,40000-60000,f.vanderberg@rijnland.edu,Agree,Strongly disagree,Agree,5,1
+P013,Priya,Patel,29,Female,India,Deccan Research University,Cognitive Neuroscience,40000-60000,p.patel@dru.ac.in,Agree,Neutral,Strongly agree,2,5
+P014,Jiyeon,Park,38,Female,South Korea,Hanseong National University,Environmental Studies,40000-60000,j.park@hnu.ac.kr,Neutral,Disagree,Strongly agree,2,4
+P015,Giulia,Ricci,36,Female,Italy,Università degli Studi di Campoverde,Philosophy,40000-60000,g.ricci@campoverde.it,Agree,Strongly agree,Strongly agree,3,4
+P016,Amara,Diallo,62,Female,Senegal,Université du Fleuve Bleu,Health Sciences,>80000,a.diallo@ufb.sn,Agree,Strongly disagree,Strongly disagree,3,1
+P017,Chiara,Romano,38,Female,Italy,Università di Monterosso,Technology Policy,40000-60000,c.romano@unimontero.it,Agree,Disagree,Strongly disagree,5,1
+P018,Mohammed,El-Amin,46,Male,Egypt,University of Al-Fayoum Sciences,Environmental Studies,60000-80000,m.elamin@uafs.edu.eg,Strongly agree,Disagree,Disagree,2,4
+P019,Minh,Tran,45,Male,Vietnam,Mekong Delta University,Social Psychology,<20000,m.tran@mdu.edu.vn,Strongly disagree,Disagree,Agree,1,2
+P020,Dewi,Rahayu,25,Female,Indonesia,Universitas Nusantara Raya,Economics,20000-40000,d.rahayu@unr.ac.id,Disagree,Strongly disagree,Strongly agree,5,4
+P021,Malak,Benali,59,Female,Morocco,Université Ibn Battuta,Economics,40000-60000,m.benali@uib-battuta.ma,Strongly agree,Disagree,Neutral,1,5
+P022,Lotte,de Vries,36,Female,Netherlands,Havenstad University of Applied Sciences,Social Psychology,60000-80000,l.devries@havenstad.nl,Agree,Neutral,Agree,2,5
+P023,Nadia,Okonkwo,58,Female,Nigeria,Nnamdi Azikiwe Research Institute,International Development,40000-60000,n.okonkwo@nari.edu.ng,Strongly agree,Strongly disagree,Agree,4,5
+P024,Bogdan,Popescu,32,Male,Romania,Institutul de Cercetare Moldovița,Development Economics,40000-60000,b.popescu@icmoldovita.ro,Agree,Strongly agree,Agree,2,5
+P025,Tobias,Fischer,33,Male,Germany,Brückenwald University,Linguistics,20000-40000,t.fischer@brueckenwald.de,Agree,Disagree,Neutral,3,5
+P026,Youssef,Chraibi,30,Male,Morocco,Université Ibn Battuta,Linguistics,60000-80000,y.chraibi@uib-battuta.ma,Strongly agree,Agree,Strongly agree,1,5
+P027,Jonas,Müller,25,Male,Germany,Steinfeld Institute of Social Sciences,Medical Sociology,60000-80000,j.müller@steinfeld.de,Disagree,Neutral,Neutral,5,5
+P028,Zuzanna,Kowalska,41,Female,Poland,Akademia Wiślańska,Urban Planning,40000-60000,z.kowalska@awislanska.pl,Agree,Disagree,Strongly disagree,5,3
+P029,Hugo,Moreau,32,Male,France,Université de Bellerive,Demography,40000-60000,h.moreau@u-bellerive.fr,Agree,Neutral,Neutral,4,1
+P030,Rania,Tehrani,43,Female,Iran,Alborz Institute of Research,Education Sciences,60000-80000,r.tehrani@alborz-research.ac.ir,Disagree,Agree,Neutral,3,2
+P031,Hira,Qureshi,53,Female,Pakistan,Chenab Institute of Social Sciences,Economics,20000-40000,h.qureshi@ciss.edu.pk,Strongly disagree,Neutral,Agree,2,2
+P032,Yuki,Tanaka,56,Female,Japan,Aokiyama University,Social Psychology,40000-60000,y.tanaka@aokiyama.ac.jp,Agree,Neutral,Strongly agree,3,1
+P033,Selin,Kaya,53,Female,Turkey,Bosphorus Institute of Social Research,Medical Sociology,40000-60000,s.kaya@bisr.edu.tr,Strongly agree,Neutral,Neutral,5,1
+P034,Thandi,Nkosi,30,Female,South Africa,University of Khayeleka,Philosophy,<20000,t.nkosi@ukhayeleka.ac.za,Agree,Strongly disagree,Strongly agree,2,4
+P035,Alejandra,Torres,33,Female,Mexico,Universidad Autónoma de Tlaxcala Norte,Science & Technology Studies,40000-60000,a.torres@uatln.mx,Agree,Disagree,Agree,3,1
+P036,Patrick,Murphy,28,Male,Ireland,Connaught University,Social Psychology,20000-40000,p.murphy@connaughtuniversity.ie,Strongly agree,Agree,Agree,5,2
+P037,Adnan,Malik,31,Male,Pakistan,Chenab Institute of Social Sciences,International Development,40000-60000,a.malik@ciss.edu.pk,Agree,Disagree,Strongly disagree,3,5
+P038,Cristián,Fuentes,57,Male,Chile,Universidad de los Andes del Sur,Political Science,60000-80000,c.fuentes@uandes-sur.cl,Strongly disagree,Strongly disagree,Agree,2,2
+P039,Brian,Otieno,43,Male,Kenya,Savannah Research University,Environmental Studies,40000-60000,b.otieno@sru.ac.ke,Agree,Neutral,Neutral,3,3
+P040,Alejandro,Martínez,26,Male,Spain,Universidad de Vallecasa,International Development,<20000,a.martínez@uvallecasa.es,Neutral,Disagree,Strongly agree,4,2
+P041,Erik,Lindqvist,51,Male,Sweden,Nordvik Institute,Technology Policy,40000-60000,e.lindqvist@nordvik.se,Agree,Strongly disagree,Strongly disagree,3,2
+P042,Leandro,Vázquez,36,Male,Argentina,Universidad Nacional de la Pampa Sur,Communication Studies,60000-80000,l.vázquez@unpampa.edu.ar,Neutral,Disagree,Agree,3,1
+P043,Tomáš,Novák,28,Male,Czech Republic,Univerzita Sokolova,Sociology,40000-60000,t.novák@unisokolova.cz,Disagree,Neutral,Strongly agree,4,5
+P044,Aarav,Sharma,62,Male,India,Deccan Research University,Cognitive Neuroscience,20000-40000,a.sharma@dru.ac.in,Agree,Disagree,Strongly agree,4,1
+P045,Piotr,Wójcik,45,Male,Poland,Instytut Badawczy w Grabowie,Gender Studies,>80000,p.wójcik@ibgrabowo.pl,Agree,Neutral,Strongly disagree,3,2
+P046,Lena,Schmidt,24,Female,Germany,Steinfeld Institute of Social Sciences,Public Administration,20000-40000,l.schmidt@steinfeld.de,Strongly agree,Neutral,Neutral,2,5
+P047,Ananya,Krishnan,40,Female,India,Kaveri Institute of Technology and Social Sciences,Psychology,60000-80000,a.krishnan@kitss.ac.in,Strongly agree,Disagree,Agree,3,3
+P048,Bram,Visser,61,Male,Netherlands,Havenstad University of Applied Sciences,Psychology,>80000,b.visser@havenstad.nl,Disagree,Agree,Disagree,5,4
+P049,Wanjiru,Kamau,55,Female,Kenya,Savannah Research University,Public Health,20000-40000,w.kamau@sru.ac.ke,Neutral,Disagree,Strongly agree,5,4
+P050,Florencia,Rodríguez,56,Female,Argentina,Universidad Nacional de la Pampa Sur,Development Economics,40000-60000,f.rodríguez@unpampa.edu.ar,Disagree,Strongly agree,Neutral,2,1
+P051,Nour,Hassan,32,Female,Egypt,Nile Valley University,Political Science,40000-60000,n.hassan@nvu.edu.eg,Strongly disagree,Neutral,Agree,1,1
+P052,Ravi,Nair,39,Male,India,Deccan Research University,Medical Sociology,40000-60000,r.nair@dru.ac.in,Strongly agree,Disagree,Neutral,5,5
+P053,Andile,Dlamini,57,Male,South Africa,University of Khayeleka,Education Sciences,<20000,a.dlamini@ukhayeleka.ac.za,Neutral,Neutral,Strongly agree,3,2
+P054,Luca,Ferretti,37,Male,Italy,Università degli Studi di Campoverde,Linguistics,20000-40000,l.ferretti@campoverde.it,Neutral,Disagree,Disagree,1,4
+P055,Noam,Rodrigues,26,Male,Portugal,Instituto Superior de Tavira,Linguistics,40000-60000,n.rodrigues@ist-tavira.pt,Neutral,Strongly agree,Strongly agree,3,3
+P056,Eleni,Georgiou,54,Female,Greece,Panagia University,Sociology,<20000,e.georgiou@panagia.gr,Agree,Disagree,Neutral,4,3
+P057,Andrei,Ionescu,53,Male,Romania,Institutul de Cercetare Moldovița,Demography,40000-60000,a.ionescu@icmoldovita.ro,Strongly agree,Strongly disagree,Strongly agree,1,4
+P058,Nusrat,Islam,53,Female,Bangladesh,Padma University,Cognitive Neuroscience,<20000,n.islam@padmauniversity.ac.bd,Agree,Strongly disagree,Strongly disagree,4,2
+P059,Mei,Nakamura,61,Female,Japan,Tsukishima University,Psychology,<20000,m.nakamura@tsukishima.ac.jp,Neutral,Neutral,Agree,5,5
+P060,Budi,Santoso,47,Male,Indonesia,Universitas Nusantara Raya,Technology Policy,20000-40000,b.santoso@unr.ac.id,Disagree,Disagree,Strongly agree,1,4
+P061,Mehmet,Demir,43,Male,Turkey,Bosphorus Institute of Social Research,Science & Technology Studies,60000-80000,m.demir@bisr.edu.tr,Agree,Neutral,Strongly agree,3,1
+P062,Chidi,Eze,45,Male,Nigeria,Nnamdi Azikiwe Research Institute,Linguistics,60000-80000,c.eze@nari.edu.ng,Strongly agree,Strongly disagree,Neutral,3,3
+P063,Hana,Horáčková,49,Female,Czech Republic,Univerzita Sokolova,Psychology,40000-60000,h.horáčková@unisokolova.cz,Disagree,Strongly agree,Strongly disagree,3,1
+P064,Nikos,Papadopoulos,27,Male,Greece,Panagia University,Technology Policy,60000-80000,n.papadopoulos@panagia.gr,Agree,Strongly disagree,Agree,3,4
+P065,Linh,Nguyen,47,Female,Vietnam,Mekong Delta University,Health Sciences,60000-80000,l.nguyen@mdu.edu.vn,Agree,Strongly agree,Neutral,4,5
+P066,Théo,Rousseau,29,Male,France,Université de Bellerive,Public Health,<20000,t.rousseau@u-bellerive.fr,Neutral,Disagree,Neutral,3,4
+P067,Fatima,Al-Rashidi,32,Female,Kuwait,Gulf Sciences University,Medical Sociology,20000-40000,f.alrashidi@gsu.edu.kw,Agree,Neutral,Agree,3,4
+P068,Elena,Petrov,54,Female,Romania,Universitatea din Cetăluș,Cognitive Neuroscience,40000-60000,e.petrov@uni-cetalus.ro,Agree,Agree,Strongly agree,2,5
+P069,Chloé,Bernard,38,Female,France,Institut Supérieur de Clairmont,Medical Sociology,40000-60000,c.bernard@isc-clairmont.fr,Agree,Disagree,Agree,5,2
+P070,Ruben,Meijer,35,Male,Netherlands,Havenstad University of Applied Sciences,Psychology,20000-40000,r.meijer@havenstad.nl,Strongly agree,Neutral,Agree,5,2
+P071,Solange,Muñoz,50,Female,Chile,Universidad de los Andes del Sur,Public Health,40000-60000,s.muñoz@uandes-sur.cl,Neutral,Neutral,Agree,1,4
+P072,Hamid,Hosseini,47,Male,Iran,Alborz Institute of Research,Political Economy,20000-40000,h.hosseini@alborz-research.ac.ir,Agree,Disagree,Disagree,2,1
+P073,Aoife,O'Brien,48,Female,Ireland,Connaught University,Philosophy,40000-60000,a.obrien@connaughtuniversity.ie,Agree,Strongly disagree,Disagree,1,2
+P074,Maria,Santos,54,Female,Philippines,Laguna Pacific University,Social Psychology,>80000,m.santos@lpu.edu.ph,Agree,Strongly agree,Strongly disagree,5,4
+P075,Pilar,Fernández,30,Female,Spain,Universidad del Río Sereno,Philosophy,20000-40000,p.fernández@uriosereno.es,Strongly agree,Strongly disagree,Strongly agree,4,1
+P076,Léa,Dupont,32,Female,France,Université de Bellerive,Sociology,20000-40000,l.dupont@u-bellerive.fr,Disagree,Disagree,Agree,2,3
+P077,Kaito,Fujiwara,51,Male,Japan,Aokiyama University,Environmental Studies,40000-60000,k.fujiwara@aokiyama.ac.jp,Strongly agree,Strongly agree,Agree,5,2
+P078,Rodrigo,Ramírez,38,Male,Mexico,Universidad Autónoma de Tlaxcala Norte,International Development,60000-80000,r.ramírez@uatln.mx,Strongly agree,Disagree,Strongly disagree,3,3
+P079,Samuel,Osei,57,Male,Ghana,Volta Basin University,Anthropology,20000-40000,s.osei@vbu.edu.gh,Agree,Strongly disagree,Neutral,3,1
+P080,Kenji,Yamamoto,55,Male,Japan,Tsukishima University,Health Sciences,60000-80000,k.yamamoto@tsukishima.ac.jp,Neutral,Agree,Agree,4,3
+P081,Sebastián,Gómez,26,Male,Colombia,Universidad del Magdalena Central,Anthropology,40000-60000,s.gómez@umagdalena.edu.co,Neutral,Neutral,Agree,1,3
+P082,Marta,López,55,Female,Spain,Universidad de Vallecasa,Health Sciences,>80000,m.lópez@uvallecasa.es,Agree,Strongly disagree,Agree,2,3
+P083,Fleur,Peters,55,Female,Netherlands,Rijnland Institute,Technology Policy,40000-60000,f.peters@rijnland.edu,Disagree,Disagree,Disagree,1,5
+P084,Adaeze,Nwosu,27,Female,Nigeria,University of Ogunlake,Science & Technology Studies,20000-40000,a.nwosu@uogunlake.ng,Strongly disagree,Agree,Strongly agree,1,2
+P085,Akosua,Mensah,44,Female,Ghana,Volta Basin University,Demography,60000-80000,a.mensah@vbu.edu.gh,Strongly disagree,Strongly disagree,Agree,2,5
+P086,Hannah,Bauer,26,Female,Germany,Grauberg University,Demography,20000-40000,h.bauer@grauberg.de,Neutral,Strongly disagree,Strongly disagree,4,2
+P087,Anouk,Smit,29,Female,Netherlands,Westerdijk University,Sociology,20000-40000,a.smit@wdu.nl,Agree,Strongly disagree,Strongly agree,2,4
+P088,Javier,García,43,Male,Spain,Universidad del Río Sereno,Linguistics,60000-80000,j.garcía@uriosereno.es,Agree,Strongly agree,Agree,3,5
+P089,Arjun,Mehta,44,Male,India,Mahanadi University,Health Sciences,40000-60000,a.mehta@mahanadi.ac.in,Disagree,Strongly agree,Agree,4,1
+P090,Joris,Hendriks,53,Male,Netherlands,Oostmeer University,Political Science,<20000,j.hendriks@oostmeer.nl,Strongly disagree,Neutral,Neutral,5,3
+P091,Minjun,Kim,45,Male,South Korea,Hanseong National University,International Development,>80000,m.kim@hnu.ac.kr,Neutral,Neutral,Neutral,3,3
+P092,Omar,Khalil,62,Male,Egypt,University of Al-Fayoum Sciences,Sociology,>80000,o.khalil@uafs.edu.eg,Neutral,Strongly disagree,Strongly agree,2,1
+P093,Lukas,Hoffmann,53,Male,Germany,Steinfeld Institute of Social Sciences,Urban Planning,>80000,l.hoffmann@steinfeld.de,Agree,Neutral,Agree,4,2
+P094,Tanvir,Ahmed,24,Male,Bangladesh,Padma University,Public Administration,60000-80000,t.ahmed@padmauniversity.ac.bd,Neutral,Strongly disagree,Neutral,5,2
+P095,Lars,Kuiper,53,Male,Netherlands,Rijnland Institute,Communication Studies,40000-60000,l.kuiper@rijnland.edu,Neutral,Strongly agree,Strongly agree,2,2
+P096,Noor,Bakker,26,Female,Netherlands,Oostmeer University,Psychology,40000-60000,n.bakker@oostmeer.nl,Agree,Agree,Agree,1,1
+P097,Felipe,Souza,29,Male,Brazil,Instituto Federal de Pesquisa Amazônica,Migration Studies,20000-40000,f.souza@ifpa.edu.br,Agree,Strongly disagree,Strongly disagree,2,2
+P098,Seun,Mbaye,53,Male,Senegal,Université du Fleuve Bleu,Social Psychology,40000-60000,s.mbaye@ufb.sn,Neutral,Disagree,Disagree,1,3
+P099,Sofia,Andersson,60,Female,Sweden,Nordvik Institute,International Development,20000-40000,s.andersson@nordvik.se,Agree,Neutral,Agree,2,2
+P100,Emre,Yılmaz,42,Male,Turkey,Karadeniz Science University,Economics,60000-80000,e.yilmaz@ksu.edu.tr,Neutral,Neutral,Agree,2,5
