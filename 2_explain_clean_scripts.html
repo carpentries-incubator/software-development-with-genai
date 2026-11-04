@@ -227,7 +227,10 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#introduction">Introduction</a></li>
+        <ul><li><a href="#asking-for-explanations">Asking for explanations</a></li>
+<li><a href="#analyzing-the-explanation">Analyzing the explanation</a></li>
+<li><a href="#cleaning-the-script">Cleaning the script</a></li>
+<li><a href="#challenges">Challenges</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -351,7 +354,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Explain and clean scripts</h1>
-        <p>Last updated on 2026-05-09 |
+        <p>Last updated on 2026-11-04 |
 
         <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/2_explain_clean_scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -370,8 +373,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do you write a lesson using Markdown and
-<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+<ul><li>How do you use an LLM chatbot for explaining code?</li>
+<li>What modifications can change the readability of code without
+altering its functionality?</li>
 </ul></div>
 </div>
 </div>
@@ -389,8 +393,163 @@ reusability.</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"><p>Something “You can’t verify what you don’t understand”</p>
+<p>A browser-based LLM chatbot is a low-friction way to understand
+unfamiliar code, but the responsibility for understanding and
+verification stays with you. If you cannot explain the code to a
+colleague, you should not rely on it. To manage cognitive load when a
+chatbot produces long explanations, anchor your understanding by reading
+the code alongside the explanation and testing small parts when
+something is unclear.</p>
+<p>In general, attempting to understand a new codebase, whether it’s
+your first week on a project or one you have inherited from another
+source, can be difficult. This can be due to many reasons; documentation
+may be incomplete, architectural decisions may be undocumented, and the
+people who know the system may be unavailable or have left the
+organisation.</p>
+<p>We can use a chatbot to build our understanding and confidence about
+our codebase by asking natural-language questions about the code. It
+helps you:</p>
+<ul><li>Build a high-level mental model of the system, which with complex
+codebases is often a huge task!</li>
+<li>Identify where key functionality is located in the code</li>
+<li>Understand naming conventions, patterns, and dependencies</li>
+<li>Reduce the cognitive load of first contact with unfamiliar code</li>
+</ul><div id="sounds-great-but" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="sounds-great-but" class="callout-inner">
+<h3 class="callout-title">Sounds great, but…</h3>
+<div class="callout-content">
+<p>It’s important to understand that no LLM is an absolute source of
+truth, but more of a guide to help build your own understanding of a
+codebase.</p>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="asking-for-explanations">Asking for explanations<a class="anchor" aria-label="anchor" href="#asking-for-explanations"></a></h2>
+<hr class="half-width"><p>Now that Helen has been able to execute the code to generate the
+plots, she wants to understand and clean the script. Even though the
+code executes without errors, Helen struggles to understand what each
+section is doing.</p>
+<p>Let’s use an LLM to help us investigate how our existing script
+works.</p>
+<ol style="list-style-type: decimal"><li>Open <code>files/code/code.py</code>, copy the script, and paste it
+into your browser chatbot.</li>
+<li>Ask for a high-level explanation first, then a line-by-line
+walkthrough. For example:
+<code>Explain what this script does, the expected input and output files, and any assumptions it makes. Then walk through each block of code.</code>
+</li>
+<li>Follow up on anything unclear. Good follow-up prompts include:
+<code>Can you explain what line 5 is doing with the transpose?</code>
+and <code>What does line 15 do to missing values?</code>
+</li>
+<li>Verify the explanation against the code. Write a short summary in
+your own words that describes the inputs, processing steps, and
+outputs.</li>
+</ol></section><section><h2 class="section-heading" id="analyzing-the-explanation">Analyzing the explanation<a class="anchor" aria-label="anchor" href="#analyzing-the-explanation"></a></h2>
+<hr class="half-width"><ol style="list-style-type: decimal"><li>Identify two statements in the chatbot’s explanation and point to
+the exact lines in the script that support them.</li>
+<li>Find one place where the explanation is vague or makes an assumption
+(inputs, outputs, or edge cases). Ask a follow-up question to
+clarify.</li>
+<li>Note one potential risk or gap in the explanation (for example,
+handling missing values or unexpected columns).</li>
+<li>Write a short evaluation (2–3 sentences) of how trustworthy and
+complete the explanation is, based on your checks.</li>
+</ol></section><section><h2 class="section-heading" id="cleaning-the-script">Cleaning the script<a class="anchor" aria-label="anchor" href="#cleaning-the-script"></a></h2>
+<hr class="half-width"><ol style="list-style-type: decimal"><li>Ask the chatbot for a refactor that improves readability and
+modularity without changing behavior. Example:
+<code>Refactor this script to improve readability and modularity. Keep the same inputs, outputs, and libraries. Do not change behavior.</code>
+</li>
+<li>Apply small, safe changes only. Typical improvements include:
+<ul><li>Move all imports to the top of the file.</li>
+<li>Rename variables (<code>d</code>, <code>x</code>, <code>y0</code>)
+to meaningful names.</li>
+<li>Extract repeated logic into functions (loading data, computing
+series, plotting).</li>
+<li>Add a short module docstring describing what the script does.</li>
+</ul></li>
+<li>Compare the refactored version to the original. If you can run the
+script, generate the plot with the same input and confirm the output is
+unchanged.</li>
+</ol></section><section><h2 class="section-heading" id="challenges">Challenges<a class="anchor" aria-label="anchor" href="#challenges"></a></h2>
+<hr class="half-width"><div id="challenge-1-verify-a-refactor" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-1-verify-a-refactor" class="callout-inner">
+<h3 class="callout-title">Challenge 1: Verify a refactor</h3>
+<div class="callout-content">
+<p>Ask the chatbot to refactor the script. Pick two changes it suggests
+and explain how you would confirm that each change did not alter the
+script’s behavior.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>Compare outputs on the same input (e.g., run both versions and
+compare the plot), and review the diff to ensure only structural changes
+were made (renames, function extraction, and docstrings) without
+altering calculations or file outputs.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="challenge-2-mitigate-risks" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-2-mitigate-risks" class="callout-inner">
+<h3 class="callout-title">Challenge 2: Mitigate risks</h3>
+<div class="callout-content">
+<p>List three practices that reduce risk when accepting chatbot-driven
+refactors.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<ul><li>Keep prompts specific and scope-limited.</li>
+<li>Review and understand every suggested change before accepting
+it.</li>
+<li>Compare outputs against the original version</li>
+<li>Re-run available tests if they exist, if none exist, add them.</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul><li>Ask for explanations before you reuse or modify code, and verify
+them against the source.</li>
+<li>If you cannot explain the code to a colleague, do not trust it.</li>
+<li>Keep refactors small and behavior-preserving; modular, readable code
+is easier to verify.</li>
+<li>Reduce risk by keeping prompts specific and confirming outputs after
+changes.</li>
+</ul></div>
+</div>
+</div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -455,8 +614,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/software-development-with-genai/2_explain_clean_scripts.html",
   "identifier": "https://carpentries-incubator.github.io/software-development-with-genai/2_explain_clean_scripts.html",
   "dateCreated": "2026-02-05",
-  "dateModified": "2026-05-09",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-04",
+  "datePublished": "2026-11-04"
 }
 
   </script><script>

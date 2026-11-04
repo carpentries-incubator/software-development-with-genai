@@ -237,6 +237,19 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-ide-integration-scenario">The IDE integration scenario</a></li>
+<li><a href="#what-information-leaves-your-machine">What information leaves your machine?</a></li>
+<li><a href="#setting-up-github-copilot">Setting up GitHub Copilot</a></li>
+<li><a href="#the-hidden-context-problem">The hidden context problem</a></li>
+<li><a href="#sandboxing-options-for-sensitive-data">Sandboxing options for sensitive data</a></li>
+<li><a href="#checklist-before-you-start">Checklist before you start</a></li>
+<li><a href="#the-geography-of-computing">The geography of computing</a></li>
+<li><a href="#choosing-a-genai-assistant">Choosing a GenAI assistant</a></li>
+<li><a href="#the-approval-gate-verification-over-generation">The approval gate: verification over generation</a></li>
+<li><a href="#measuring-efficiency-rewrite-time">Measuring efficiency: rewrite time</a></li>
+<li><a href="#the-four-layer-validation-stack">The four-layer validation stack</a></li>
+<li><a href="#multi-model-verification">Multi-model verification</a></li>
+<li><a href="#episode-exercise-sensitive-dataset-integration">Episode exercise: sensitive dataset integration</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -351,7 +364,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Write and validate scripts</h1>
-        <p>Last updated on 2026-05-09 |
+        <p>Last updated on 2026-11-04 |
 
         <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/3_writing_validate_scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -370,8 +383,13 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do you write a lesson using Markdown and
-<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+<ul><li>How do IDE-integrated AI assistants like GitHub Copilot work?</li>
+<li>What information is sent to remote servers when I use these
+tools?</li>
+<li>How can I configure these tools to balance productivity and
+privacy?</li>
+<li>How do I move from vibe coding to research orchestration?</li>
+<li>How can I use one AI to catch the errors of another?</li>
 </ul></div>
 </div>
 </div>
@@ -387,108 +405,584 @@ task.</li>
 IDE.</li>
 <li>Validate AI generated scripts using a critical framework (that the
 AI is doing the right thing)</li>
+<li>Understand how IDE-integrated AI assistants process your code</li>
+<li>Learn to configure GitHub Copilot and similar tools</li>
+<li>Recognize the reduced transparency compared to chat-based
+approaches</li>
+<li>Develop habits for reviewing inline suggestions critically</li>
+<li>Shift from a writer to an auditor mindset using the approval
+gate.</li>
+<li>Use a four-layer validation stack with explicit requirement
+constraints.</li>
+<li>Use multi-model verification to peer-review research code.</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"><p>Here, we will use an integrated LLM in an IDE.</p>
-<p>Tool selection Verification strategy Reproducibility recommendations
-Berkley lesson on validation</p>
-<!-- This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
-[R Markdown][r-markdown] for dynamic files that can render code into output.
-Please refer to the [Introduction to The Carpentries
-Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
+<hr class="half-width"><p>Helen has cleaned the inherited script and now wants to extend it
+with a sensitive survey dataset. She needs to merge country-level
+environmental and economic concern data with CO2 and GDP per capita, and
+plot two new scatter plots. She shifts from chat-based prompting to an
+IDE-integrated assistant, but to do this safely, she decides to do this
+only after sandboxing the project and restrict what the tool can
+see.</p>
+<p>The new file, <code>survey_participants.csv</code>, contains
+information about 100 researchers with direct identifiers (names and
+emails), demographics (age, gender, nationality, institution,
+department, income band), and survey responses on AI tools, data
+sharing, open science, and concern levels.</p>
+</section><section><h2 class="section-heading" id="the-ide-integration-scenario">The IDE integration scenario<a class="anchor" aria-label="anchor" href="#the-ide-integration-scenario"></a></h2>
+<hr class="half-width"><p>In this scenario, AI assistance is integrated directly into your
+development environment. As you type, the AI suggests completions,
+entire functions, or even multi-line code blocks.</p>
+<p>Generative AI has the potential to transform how researchers work
+with code, and with the integration of such capability within common
+IDEs, such as Visual Studio Code, provide the coding researcher with
+powerful tools to modify, expand and otherwise work with code. But this
+potential needs to be tempered with critical thinking and a healthy
+degree of skepticism.</p>
+<figure><img src="fig/chris-ried-ieic5Tq8YMk-unsplash.jpg" alt="Photo of Python code within an IDE" class="figure mx-auto d-block"><div class="figcaption">Photo courtesy of Chris Reid on Unsplash</div>
+</figure><div class="section level3">
+<h3 id="common-tasks-and-features">Common tasks and features<a class="anchor" aria-label="anchor" href="#common-tasks-and-features"></a></h3>
+<p>AI coding assistants in IDEs (such as GitHub Copilot) provide a
+bewildering array of support for various tasks. For code editing, these
+include:</p>
+<ul><li>
+<strong>Code completion and generation</strong> - suggests and
+generates code snippets based on context, reducing time spent on
+boilerplate and repetitive code</li>
+<li>
+<strong>Function and method suggestions</strong> - proposes complete
+function implementations based on function signatures and
+docstrings</li>
+<li>
+<strong>Refactoring support</strong> - suggestions for improving
+code structure and readability</li>
+</ul><p>At a higher level, they can also provide:</p>
+<ul><li>
+<strong>Code explanation</strong> - explains how existing code
+works, helping researchers understand unfamiliar code or learn new
+programming patterns</li>
+<li>
+<strong>Debugging assistance</strong> - identifies potential bugs
+and suggests fixes for problematic code</li>
+<li>
+<strong>Documentation generation</strong> - automatically generates
+comments, docstrings, and README content</li>
+<li>
+<strong>Test generation</strong> - creates unit tests for existing
+code to improve code reliability</li>
+<li>
+<strong>Language/framework translation</strong> - converts code
+between programming languages and frameworks</li>
+</ul><p>Such tools can also assist with writing new code, helping to
+structure projects and write new functionality by generating code based
+on high-level descriptions, function signatures, and requirements. These
+initial implementations are then reviewed and refined by developers.</p>
+</div>
+<div class="section level3">
+<h3 id="benefits-and-risks">Benefits and risks<a class="anchor" aria-label="anchor" href="#benefits-and-risks"></a></h3>
+<p>AI coding assistants can accelerate development by reducing time
+spent on routine coding tasks, allowing researchers to focus on
+domain-specific problems. For those new to a programming language, these
+tools help lower the learning curve and enable faster productivity. The
+suggestions and examples provided by AI assistants may also encourage
+better coding practices and improve overall code quality, including
+documentation.</p>
+<p>However, they also introduce significant risks:</p>
+<ul><li>
+<strong>Correctness and validation</strong> - generative systems
+optimize for likelihood, not correctness. AI-generated code can sound
+confident but be incomplete, incorrect, or insecure. Researchers remain
+fully responsible for validating outputs.</li>
+<li>
+<strong>Limited explanation</strong> - unlike a standalone AI like
+ChatGPT, IDE-integrated AI often provides suggestions without detailed
+reasoning. This can reduce researchers’ understanding of AI-generated
+code.</li>
+<li>
+<strong>Potential over-reliance</strong> - it can be very tempting
+to accept AI code suggestions that appear to work without fully
+understanding them.</li>
+<li>
+<strong>Privacy and security risks</strong> - the AI may send code
+snippets to cloud services for processing. Sensitive data or unpublished
+research could be exposed if this is not carefully managed.</li>
+<li>
+<strong>Context and edge cases</strong> - AI assistants may miss
+domain-specific requirements, edge cases, or research-specific
+constraints that are critical for correctness.</li>
+<li>
+<strong>Code quality</strong> - generated code may work but be
+inefficient, poorly structured, or violate best practices, degrading
+long-term maintainability.</li>
+</ul><!-- ```{figure} img/vscode_githubcopilot.png
+:alt: VS-code and GitHub copilot
+:width: 100%
 
-What you need to know is that there are three sections required for a valid
-Carpentries lesson:
+Visual Studio code with GitHub copilot plugin. You can see the chat and a suggestion based on a comment that is waiting to be accepted. The AI system runs in a remote end-point most likely in USA GitHub (Microsoft) servers.
+``` --></div>
+<div class="section level3">
+<h3 id="how-this-differs-from-chat-based-coding">How this differs from chat-based coding<a class="anchor" aria-label="anchor" href="#how-this-differs-from-chat-based-coding"></a></h3>
+<table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr><th>Aspect</th>
+<th>Chat-based (Scenario I)</th>
+<th>IDE-integrated (Scenario II)</th>
+</tr></thead><tbody><tr><td><strong>Data flow</strong></td>
+<td>You explicitly paste code</td>
+<td>Context sent automatically</td>
+</tr><tr><td><strong>Visibility</strong></td>
+<td>You see exactly what you share</td>
+<td>Less clear what’s transmitted</td>
+</tr><tr><td><strong>Execution</strong></td>
+<td>Manual copy/paste</td>
+<td>Still manual, but faster</td>
+</tr><tr><td><strong>Context</strong></td>
+<td>Limited to what you provide</td>
+<td>May include entire project</td>
+</tr></tbody></table></div>
+</section><section><h2 class="section-heading" id="what-information-leaves-your-machine">What information leaves your machine?<a class="anchor" aria-label="anchor" href="#what-information-leaves-your-machine"></a></h2>
+<hr class="half-width"><p>When you use IDE-integrated tools, data transmission happens
+automatically and continuously. Understanding what’s sent is
+crucial.</p>
+<div class="section level3">
+<h3 id="typically-transmitted-data">Typically transmitted data<a class="anchor" aria-label="anchor" href="#typically-transmitted-data"></a></h3>
+<table class="table"><colgroup><col width="29%"><col width="24%"><col width="45%"></colgroup><thead><tr><th>Data Type</th>
+<th>Purpose</th>
+<th>Privacy Concern</th>
+</tr></thead><tbody><tr><td>Current file content</td>
+<td>Generate relevant suggestions</td>
+<td>May contain sensitive code</td>
+</tr><tr><td>Open file tabs</td>
+<td>Broader context</td>
+<td>More exposure</td>
+</tr><tr><td>File paths</td>
+<td>Understand project structure</td>
+<td>Reveals project organization</td>
+</tr><tr><td>Cursor position</td>
+<td>Know what to complete</td>
+<td>Minimal concern</td>
+</tr><tr><td>Recent edits</td>
+<td>Understand your intent</td>
+<td>Sent frequently</td>
+</tr></tbody></table></div>
+<div class="section level3">
+<h3 id="what-may-be-transmitted-tool-dependent">What may be transmitted (tool-dependent)<a class="anchor" aria-label="anchor" href="#what-may-be-transmitted-tool-dependent"></a></h3>
+<ul><li>Other files in your workspace</li>
+<li>Git history</li>
+<li>Comments and docstrings</li>
+<li>Import statements (revealing your dependencies)</li>
+</ul><p>:::{callout} Read your tool’s documentation Each tool has different
+data collection policies. For example: - GitHub Copilot transmits code
+context to GitHub/Microsoft servers - Some tools offer “local only”
+models (e.g., Tabnine) - Enterprise tiers may offer data isolation
+guarantees :::</p>
+</div>
+</section><section><h2 class="section-heading" id="setting-up-github-copilot">Setting up GitHub Copilot<a class="anchor" aria-label="anchor" href="#setting-up-github-copilot"></a></h2>
+<hr class="half-width"><!-- :::callout
+To-Do: The content of this session might not be fully up to date.
+::: --><p>GitHub Copilot is currently the most widely-used IDE-integrated
+assistant. Here’s how to set it up with privacy and control in mind.</p>
+<p>GitHub Copilot integrates directly into Visual Studio Code as an
+extension installable from within the IDE, providing access to:</p>
+<ul><li>
+<strong>On-request explanations</strong> - allowing you to obtain
+responses to questions in a chat interface</li>
+<li>
+<strong>Real-time assistance as you continue to develop your
+code</strong> - where Copilot continuously analyzes the code you write,
+as well as comments and surrounding context, to offer intelligent
+suggestions which require approval.</li>
+<li>
+<strong>On-request direct code modification</strong> - by requesting
+specific changes, your code is modified directly by Copilot (again,
+requiring specific approval before it integrates the suggested
+changes)</li>
+</ul><p>All of this is integrated into the VSCode editor, so you do not need
+to leave your development environment.</p>
+<div class="section level3">
+<h3 id="the-lifecycle-of-a-copilot-prompt">The lifecycle of a Copilot prompt<a class="anchor" aria-label="anchor" href="#the-lifecycle-of-a-copilot-prompt"></a></h3>
+<p>So how does Copilot integrate with VSCode, and how does it handle
+data? Let’s look at how it creates a code suggestion as an example:</p>
+<!-- [Placeholder: Add the lifecycle figure from Southampton (fig/copilot-prompt-lifecycle.png).] -->
+<p>At a high level, the following steps are followed:</p>
+<p>Within the Copilot-enabled IDE:</p>
+<ol style="list-style-type: decimal"><li>Developer enters text into code editor, such as VSCode, gathering
+context from a number of sources (code before and after cursor, file
+name and type, other open editor tabs)</li>
+<li>The prompt is constructed from the amassed context and sent to the
+Copilot proxy</li>
+</ol><p>Within the Copilot proxy (within the “Cloud”):</p>
+<ol start="3" style="list-style-type: decimal"><li>Filters the requests, terminating those involving toxic language,
+unrelated code requests, and perceived hacking attempts.</li>
+<li>The prompt is sent to the GitHub Copilot LLM</li>
+</ol><p>The Copilot LLM (also in the “Cloud”):</p>
+<ol start="5" style="list-style-type: decimal"><li>Receives the request and formulates a code suggestion which is sent
+back to the proxy</li>
+</ol><p>Back within the Copilot proxy:</p>
+<ol start="6" style="list-style-type: decimal"><li>Receives the response, and tests code suggestions for code
+vulnerabilities, truncating responses that contain unique identifiers
+(such as email addresses, GitHub URLs, IP addresses, etc.), and filters
+out those matching known public code. The processed response is fed back
+to the Copilot client within the IDE</li>
+</ol><p>Back within the Copilot-enabled IDE:</p>
+<ol start="7" style="list-style-type: decimal"><li>The Copilot extension receives the code suggestion which is
+presented to the user to accept or reject</li>
+</ol><p>GitHub provides further detailed information about <a href="https://resources.github.com/learn/pathways/copilot/essentials/how-github-copilot-handles-data/" class="external-link">how
+GitHub Copilot handles data</a>.</p>
+</div>
+<div class="section level3">
+<h3 id="installation-in-vs-code">Installation in VS Code<a class="anchor" aria-label="anchor" href="#installation-in-vs-code"></a></h3>
+<ol style="list-style-type: decimal"><li>Install the “GitHub Copilot” extension from the marketplace</li>
+<li>Sign in with your GitHub account</li>
+<li>If you have an educational email, you may qualify for free
+access</li>
+</ol></div>
+<div class="section level3">
+<h3 id="key-configuration-settings">Key configuration settings<a class="anchor" aria-label="anchor" href="#key-configuration-settings"></a></h3>
+<p>Open VS Code settings (Ctrl+, or Cmd+,) and search for “Copilot”:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">JSON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode json" tabindex="0"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a>    <span class="er">//</span> <span class="er">Disable</span> <span class="er">automatic</span> <span class="er">suggestions</span> <span class="er">(require</span> <span class="er">manual</span> <span class="er">trigger)</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a>    <span class="dt">"github.copilot.enable"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a>        <span class="dt">"*"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a>        <span class="dt">"markdown"</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span>  <span class="er">//</span> <span class="er">Disable</span> <span class="er">for</span> <span class="er">documentation</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a>        <span class="dt">"plaintext"</span><span class="fu">:</span> <span class="kw">false</span>  <span class="er">//</span> <span class="er">Disable</span> <span class="er">for</span> <span class="er">plain</span> <span class="er">text</span> <span class="er">files</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a>    <span class="fu">},</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1" aria-label="code-block-1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1" aria-label="code-block-1-9"></a>    <span class="er">//</span> <span class="er">Require</span> <span class="er">explicit</span> <span class="er">trigger</span> <span class="er">instead</span> <span class="er">of</span> <span class="er">automatic</span> <span class="er">suggestions</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1" aria-label="code-block-1-10"></a>    <span class="dt">"editor.inlineSuggest.enabled"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1" aria-label="code-block-1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1" aria-label="code-block-1-12"></a>    <span class="er">//</span> <span class="er">Control</span> <span class="er">which</span> <span class="er">files</span> <span class="er">Copilot</span> <span class="er">can</span> <span class="er">access</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1" aria-label="code-block-1-13"></a>    <span class="dt">"github.copilot.advanced"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1" aria-label="code-block-1-14"></a>        <span class="dt">"indentationMode"</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1" aria-label="code-block-1-15"></a>            <span class="dt">"python"</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1" aria-label="code-block-1-16"></a>            <span class="dt">"javascript"</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb1-17"><a href="#cb1-17" tabindex="-1" aria-label="code-block-1-17"></a>        <span class="fu">}</span></span>
+<span id="cb1-18"><a href="#cb1-18" tabindex="-1" aria-label="code-block-1-18"></a>    <span class="fu">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" tabindex="-1" aria-label="code-block-1-19"></a><span class="fu">}</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="disabling-ai-assistend-coding-for-sensitive-files">Disabling AI assistend coding for sensitive files<a class="anchor" aria-label="anchor" href="#disabling-ai-assistend-coding-for-sensitive-files"></a></h3>
+<p>Ideally, there would be an equivalent of <code>.gitignore</code> so
+that certain files are never sent to remote end-point (e.g. secrets,
+credentials, sensitive data). Some tools support this type of control,
+but with GitHub copilot <a href="https://learn.microsoft.com/en-us/visualstudio/ide/visual-studio-github-copilot-admin?view=vs-2022" class="external-link">“Content
+exclusion is available only with a GitHub Copilot Business or a GitHub
+Copilot Enterprise subscriptions.”</a>.</p>
+<p>For a recent survey of other tools and their <em>ignore</em>
+settings, <a href="https://github.com/yjcho9317/aiignore-cli/blob/main/docs/test-report.md" class="external-link">see
+this link</a>.</p>
+<p>An alternative is to run VScode inside a container so that only
+certain folders of the file system are visible, and secrets can be
+separated.</p>
+</div>
+</section><section><h2 class="section-heading" id="the-hidden-context-problem">The hidden context problem<a class="anchor" aria-label="anchor" href="#the-hidden-context-problem"></a></h2>
+<hr class="half-width"><p>A key difference from chat-based AI is that you don’t explicitly
+control what context the model receives. This has implications:</p>
+<div class="section level3">
+<h3 id="example-unintended-context-sharing">Example: Unintended context sharing<a class="anchor" aria-label="anchor" href="#example-unintended-context-sharing"></a></h3>
+<pre class="mermaid"><code>flowchart TB
+    accTitle: {A short figure title}
+    accDescr: {A longer description of the figure, highlighting important elements}
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+    A["main.py&lt;br/&gt;(you're here)"]
+    B["config.py&lt;br/&gt;(open tab)"]
+    C["secrets.env&lt;br/&gt;(open tab!)"]
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+    D["All may be sent as context"]
 
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
+    A --&gt; D
+    B --&gt; D
+    C --&gt; D
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    style A fill:#6f9fc2,stroke:#000,stroke-width:2px,color:#000
+    style B fill:#8db1ca,stroke:#000,stroke-width:2px,color:#000
+    style C fill:#d96666,stroke:#000,stroke-width:2px,color:#000
 
-::::::::::::::::::::::::::::::::::::: challenge
+    style D fill:none,stroke:none,color:#000,font-size:20px</code></pre>
+<p><strong>The issue</strong>: You might have a secrets file open in
+another tab, and parts of it could be included in the context sent to
+the AI server.</p>
+</div>
+<div class="section level3">
+<h3 id="mitigation-strategies">Mitigation strategies<a class="anchor" aria-label="anchor" href="#mitigation-strategies"></a></h3>
+<ol style="list-style-type: decimal"><li>
+<strong>Close sensitive tabs</strong> when using AI completion</li>
+<li>
+<strong>Use sandboxing / containerization</strong> to exclude
+sensitive files</li>
+<li>
+<strong>Consider workspace separation</strong> - keep sensitive
+projects in different VS Code windows</li>
+<li>
+<strong>Review your open tabs</strong> before intensive AI-assisted
+sessions</li>
+<li>
+<strong>Compression of the context</strong> some tools (e.g. Claude
+code) or some extensions can compress what goes to the context window so
+that not all the files need to be sent to remote for synthesising new
+code.</li>
+</ol></div>
+</section><section><h2 class="section-heading" id="sandboxing-options-for-sensitive-data">Sandboxing options for sensitive data<a class="anchor" aria-label="anchor" href="#sandboxing-options-for-sensitive-data"></a></h2>
+<hr class="half-width"><p>When sensitive data is involved, decide upfront how to isolate files
+and control access. The goal is to limit what an IDE assistant can read
+while keeping a workable development flow.</p>
+<div class="section level3">
+<h3 id="option-1-container-based-sandbox-recommended">Option 1: Container-based sandbox (recommended)<a class="anchor" aria-label="anchor" href="#option-1-container-based-sandbox-recommended"></a></h3>
+<p>Run VS Code in a container and mount only the project folder you want
+the assistant to access. Keep sensitive files in a separate directory
+that is not mounted.</p>
+<p>[Placeholder: Add Docker-based setup steps and a minimal
+<code>devcontainer</code> or run command.]</p>
+</div>
+<div class="section level3">
+<h3 id="option-2-local-isolation-without-docker">Option 2: Local isolation without Docker<a class="anchor" aria-label="anchor" href="#option-2-local-isolation-without-docker"></a></h3>
+<p>Create a dedicated project folder that contains only the code and
+non-sensitive datasets. Keep the sensitive survey data in a separate
+location and copy in only the columns needed for analysis.</p>
+<p>[Placeholder: Add OS-specific steps for creating a clean workspace
+and copying inputs.]</p>
+</div>
+<div class="section level3">
+<h3 id="option-3-no-sandbox-risky">Option 3: No sandbox (risky)<a class="anchor" aria-label="anchor" href="#option-3-no-sandbox-risky"></a></h3>
+<p>If you cannot sandbox, document the risk and reduce exposure by
+closing tabs, limiting open files, and disabling AI assistance for
+sensitive folders where possible.</p>
+<p>Check with your institution for the specific guidance and policy
+checks.</p>
+</div>
+</section><section><h2 class="section-heading" id="checklist-before-you-start">Checklist before you start<a class="anchor" aria-label="anchor" href="#checklist-before-you-start"></a></h2>
+<hr class="half-width"><p>Before you write a single line of code, make three explicit
+decisions:</p>
+<ul><li>
+<strong>Which programming language?</strong>: Python (this
+workshop). The most popular language for data science; enormous library
+ecosystem; runs everywhere.</li>
+<li>
+<strong>Where will the computation run?</strong>: Your laptop, your
+organisation’s cloud, or an external cloud service. See the next
+section.</li>
+<li>
+<strong>Where does your data live?</strong>: Local disk,
+institutional storage, or a public URL. This matters especially if the
+data is sensitive or personal.</li>
+</ul><p>The “where” question is more important than it first appears. It
+affects data confidentiality, ease of setup, and whether your workflow
+will still work in six months when a cloud service changes its
+terms.</p>
+<!-- (workshop-setup)= -->
+</section><section><h2 class="section-heading" id="the-geography-of-computing">The geography of computing<a class="anchor" aria-label="anchor" href="#the-geography-of-computing"></a></h2>
+<hr class="half-width"><p>Every time you run code, the computation happens <em>somewhere</em>.
+There are three broad categories:</p>
+<p>[Placeholder: Insert the diagram from workshop-data-viz showing
+local, org cloud, and external cloud trade-offs.]</p>
+<table class="table"><colgroup><col width="25%"><col width="25%"><col width="25%"><col width="25%"></colgroup><thead><tr><th>Environment</th>
+<th>Examples</th>
+<th>Advantages</th>
+<th>Considerations</th>
+</tr></thead><tbody><tr><td><strong>Local laptop</strong></td>
+<td>Your own machine, Python installed</td>
+<td>Data never leaves your hands; works offline; full control</td>
+<td>Risk if device is lost/stolen; requires manual installation; limited
+RAM/CPU</td>
+</tr><tr><td><strong>Organisation cloud</strong></td>
+<td>Aalto JupyterHub (<code>jupyter.cs.aalto.fi</code>), CSC Noppe
+(<code>noppe.csc.fi</code>)</td>
+<td>Institutional data protection; software pre-installed; no personal
+hardware risk</td>
+<td>Depends on institution’s uptime and quota; requires account</td>
+</tr><tr><td><strong>External cloud</strong></td>
+<td>Google Colab, Kaggle Notebooks</td>
+<td>Zero installation; free tier available; easy to share</td>
+<td>Unclear or unfavourable terms of service; data uploaded to third
+party; may not be suitable for sensitive data</td>
+</tr></tbody></table><div class="{warning}">
+<p>If you are working with real research data – especially personal
+data, clinical data, or anything covered by your institution’s data
+management plan – check with your data protection officer or IT security
+team before choosing an environment. External cloud services (including
+Google Colab and GenAI tools) are generally <strong>not</strong>
+suitable for sensitive or personal data.</p>
+</div>
+</section><section><h2 class="section-heading" id="choosing-a-genai-assistant">Choosing a GenAI assistant<a class="anchor" aria-label="anchor" href="#choosing-a-genai-assistant"></a></h2>
+<hr class="half-width"><p>There are three categories of GenAI coding assistant, differing
+mainly in where the computation runs:</p>
+<p>[Placeholder: Insert the diagram from workshop-data-viz showing
+local, org, and external GenAI options.]</p>
+<table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr><th>Option</th>
+<th>Example</th>
+<th>Notes</th>
+</tr></thead><tbody><tr><td><strong>Local (on your machine)</strong></td>
+<td><a href="https://github.com/ggerganov/llama.cpp" class="external-link">llama.cpp</a></td>
+<td>Fully private; no data leaves your computer; requires a capable GPU
+or CPU; setup is non-trivial. See
+{doc}<code>appendix-local-llms</code>.</td>
+</tr><tr><td><strong>Organisation’s GenAI</strong></td>
+<td>
+<a href="https://ai.aalto.fi" class="external-link">ai.aalto.fi</a> (Aalto only)</td>
+<td>Complies with institutional data policy; recommended for sensitive
+work</td>
+</tr><tr><td><strong>External cloud</strong></td>
+<td>ChatGPT, Gemini, Claude</td>
+<td>Easy to access; generally free tier available; review the provider’s
+privacy terms before use</td>
+</tr></tbody></table><div class="{warning}">
+<p>Do <strong>not</strong> paste real personal data, clinical data, or
+any data covered by a confidentiality agreement into an external GenAI
+tool. The text you submit is typically used to improve the model or
+stored on the provider’s servers.</p>
+</div>
+</section><section><h2 class="section-heading" id="the-approval-gate-verification-over-generation">The approval gate: verification over generation<a class="anchor" aria-label="anchor" href="#the-approval-gate-verification-over-generation"></a></h2>
+<hr class="half-width"><p>In an agentic research workflow, your role is to audit and approve
+code rather than write it. The standard has shifted from vibe coding to
+spec-driven orchestration.</p>
+<p>The approval gate is the point where you decide AI-generated code is
+robust enough for research production. It separates a working prototype
+from validated science.</p>
+<div id="the-review-first-standard" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="the-review-first-standard" class="callout-inner">
+<h3 class="callout-title">The review-first standard</h3>
+<div class="callout-content">
+<p>The bottleneck in research is no longer writing code; it is verifying
+it. A high-performance workflow follows this cycle: Plan -&gt; Agent
+Implementation -&gt; Automated AI-Powered Testing -&gt; Human
+Review.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="measuring-efficiency-rewrite-time">Measuring efficiency: rewrite time<a class="anchor" aria-label="anchor" href="#measuring-efficiency-rewrite-time"></a></h2>
+<hr class="half-width"><p>Rewrite time is a metric to determine if an AI workflow is actually
+helping your research.</p>
+<ul><li>
+<strong>Definition:</strong> The manual effort in minutes a
+researcher spends making AI-generated output production-ready.</li>
+<li>
+<strong>Goal:</strong> If you spend 20 minutes prompting but then 40
+minutes fixing the code, your rewrite time is too high.</li>
+</ul><div id="challenge-calculate-your-rewrite-time" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-calculate-your-rewrite-time" class="callout-inner">
+<h3 class="callout-title">Challenge: calculate your rewrite time</h3>
+<div class="callout-content">
+<p>Look back at a script you recently generated with an AI agent. 1. How
+many minutes did you spend fixing or refactoring the code to make it
+run? 2. If this took more than 10% of the total task time, what was the
+likely cause? - Ambiguous specs? - AI over-confidence? - Lack of local
+context?</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="the-four-layer-validation-stack">The four-layer validation stack<a class="anchor" aria-label="anchor" href="#the-four-layer-validation-stack"></a></h2>
+<hr class="half-width"><p>To minimize rewrite time and ensure research rigor, use a structured
+validation stack.</p>
+<div class="section level3">
+<h3 id="layer-1-requirement-constraints-no-go-zones">Layer 1: Requirement constraints (No-Go Zones)<a class="anchor" aria-label="anchor" href="#layer-1-requirement-constraints-no-go-zones"></a></h3>
+<p>Before the AI writes code, define requirement constraints in your
+<code>AGENTS.md</code>. These are rules the AI is not allowed to
+break.</p>
+<p><em>Example:</em> “Do not change the column names in
+<code>raw_data.csv</code>” or “Use only base R for this visualization to
+ensure compatibility.”</p>
+</div>
+<div class="section level3">
+<h3 id="layer-2-automated-unit-tests">Layer 2: Automated unit tests<a class="anchor" aria-label="anchor" href="#layer-2-automated-unit-tests"></a></h3>
+<p>Ask the agent to write tests before the implementation. Use a prompt
+pattern like: “First, write five Pytest cases that define the success of
+this data cleaning script. I will approve the tests before you write the
+logic.”</p>
+</div>
+<div class="section level3">
+<h3 id="layer-3-metamorphic-and-invariant-checks">Layer 3: Metamorphic and invariant checks<a class="anchor" aria-label="anchor" href="#layer-3-metamorphic-and-invariant-checks"></a></h3>
+<p>Test the relationships in your data that should never change. -
+<strong>Invariants:</strong> The total number of participants must
+remain 150 after merging. - <strong>Metamorphic checks:</strong> If I
+change the order of the input rows, the final mean score should not
+change.</p>
+</div>
+<div class="section level3">
+<h3 id="layer-4-domain-plausibility">Layer 4: Domain plausibility<a class="anchor" aria-label="anchor" href="#layer-4-domain-plausibility"></a></h3>
+<p>This is where your research expertise is irreplaceable. AI does not
+know that a negative blood pressure reading is impossible.</p>
+<hr></div>
+</section><section><h2 class="section-heading" id="multi-model-verification">Multi-model verification<a class="anchor" aria-label="anchor" href="#multi-model-verification"></a></h2>
+<hr class="half-width"><p>We use a challenger model to audit an implementation model rather
+than trusting a single AI.</p>
+<div id="challenge-orchestrate-a-peer-review" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-orchestrate-a-peer-review" class="callout-inner">
+<h3 class="callout-title">Challenge: orchestrate a peer review</h3>
+<div class="callout-content">
+<ol style="list-style-type: decimal"><li><p>Use Model A (such as Claude Code or Cursor) to generate a data
+cleaning script.</p></li>
+<li>
+<p>Provide the code to Model B (such as Gemini CLI) with the
+following prompt:</p>
+<p>“Read this script. Act as a skeptical senior data scientist. Identify
+three potential edge cases where this script will fail, such as empty
+strings, NaN values, or encoding issues. Suggest specific assert
+statements to catch these.”</p>
+</li>
+<li><p>Reflect: Did the challenger model find something the
+implementation model missed?</p></li>
+</ol></div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Why this works
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<p>Models have different blind spots. Forcing a second AI to act as an
+auditor helps bypass the tendency of the primary assistant to be
+over-confident. This process reduces your manual rewrite time.</p>
+</div>
+</div>
+</div>
+</div>
 
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-```r
-paste("This", "new", "lesson", "looks", "good")
-```
-
-:::::::::::::::::::::::: solution
-
-## Output
-
-```output
-[1] "This new lesson looks good"
-```
-
-:::::::::::::::::::::::::::::::::
-
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-:::::::::::::::::::::::: solution
-
-You can add a line with at least three colons and a `solution` tag.
-
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Figures
-
-You can use standard markdown for static figures with the following syntax:
-
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
-
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
-
-::::::::::::::::::::::::::::::::::::: callout
-
-Callout sections can highlight information.
-
-They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present "asides":
-content that is not central to the narrative of the lesson,
-e.g. by providing the answer to a commonly-asked question.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-## Math
-
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
-
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
-
-Cool, right?
-
-::::::::::::::::::::::::::::::::::::: keypoints
-
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-[r-markdown]: https://rmarkdown.rstudio.com/ -->
+</section><section><h2 class="section-heading" id="episode-exercise-sensitive-dataset-integration">Episode exercise: sensitive dataset integration<a class="anchor" aria-label="anchor" href="#episode-exercise-sensitive-dataset-integration"></a></h2>
+<hr class="half-width"><p>[Placeholder: Add exercise text instructing learners to expand the
+script to read the sensitive survey dataset and plot two scatter plots:
+environmental concern vs CO2 per capita (country-level), and economic
+concern vs GDP per capita (country-level). Include IDE assistant prompts
+and validation steps.]</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul><li>The approval gate separates experimental prototypes from validated
+research.</li>
+<li>Rewrite time is the primary metric for measuring AI workflow
+value.</li>
+<li>Requirement constraints prevent the AI from drifting away from
+research specs.</li>
+<li>Multi-model verification uses a second AI to act as a skeptical peer
+reviewer.</li>
+</ul></div>
+</div>
+</div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -553,8 +1047,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/software-development-with-genai/3_writing_validate_scripts.html",
   "identifier": "https://carpentries-incubator.github.io/software-development-with-genai/3_writing_validate_scripts.html",
   "dateCreated": "2026-02-05",
-  "dateModified": "2026-05-09",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-04",
+  "datePublished": "2026-11-04"
 }
 
   </script><script>

@@ -246,6 +246,8 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
+<li><a href="#testing-code">Testing code</a></li>
+<li><a href="#refactoring-code">Refactoring code</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -351,7 +353,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Testing and refactoring scripts</h1>
-        <p>Last updated on 2026-05-09 |
+        <p>Last updated on 2026-11-04 |
 
         <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/4_refactoring_testing_scripts.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -397,10 +399,165 @@ without breaking its functionality.</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"><p>Test-driven development <!--
+<hr class="half-width"><p>Helen has succesfully extended her script to include her survey.
+Nevertheless, the original script has grown. Even though it has more
+functionality, it will be difficult to maintain and make sure that new
+changes do not break old behaviour. Consequently, Helen has decided to
+invest some time in writing some tests and refactoring her code.</p>
+</section><section><h2 class="section-heading" id="testing-code">Testing code<a class="anchor" aria-label="anchor" href="#testing-code"></a></h2>
+<hr class="half-width"><p>Start with a minimal pytest suite for the Episode 3 script. Identify
+the script’s core behaviors, create a small set of fixtures (sample
+inputs and expected outputs), and write tests that verify those
+behaviors. Run the tests from your IDE or the terminal to establish a
+reliable baseline before you make any changes.</p>
+<div id="challenge-1-build-the-first-test-suite" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-1-build-the-first-test-suite" class="callout-inner">
+<h3 class="callout-title">Challenge 1: Build the first test suite</h3>
+<div class="callout-content">
+<p>Create at least three tests for the Episode 3 script that confirm it
+produces the expected outputs for typical inputs and handles at least
+one error case. Keep the tests small and focused on behavior, not
+implementation.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>One possible suite is: 1. a “happy path” test that checks a known
+input produces a known output, 2. a test that verifies the script
+rejects missing or malformed inputs, and 3. a test that asserts the
+output shape or key summary statistics remain stable.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="evaluating-test-quality">Evaluating test quality<a class="anchor" aria-label="anchor" href="#evaluating-test-quality"></a></h3>
+<p>Good tests are specific, deterministic, and fail for the right
+reasons. Look for tests that are easy to understand, cover critical
+branches, and guard against regressions without being so brittle that
+they fail on harmless refactors.</p>
+<div id="challenge-2-evaluate-test-quality" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-2-evaluate-test-quality" class="callout-inner">
+<h3 class="callout-title">Challenge 2: Evaluate test quality</h3>
+<div class="callout-content">
+<p>Review your tests and note one improvement you could make to increase
+their reliability or coverage. Then update the suite to implement that
+improvement.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<p>Common improvements include: 1. adding a fixture to reduce repeated
+setup, 2. asserting on precise outputs rather than vague checks, or 3.
+adding a test for a boundary case you identified during review.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="test-driven-development-tdd">Test-driven development (TDD)<a class="anchor" aria-label="anchor" href="#test-driven-development-tdd"></a></h3>
+<p>With TDD, you define the behavior first, watch the test fail (red),
+implement the minimum code to pass (green), and then refactor while
+keeping the tests green.</p>
+<div id="challenge-3-extend-the-script-with-tdd" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-3-extend-the-script-with-tdd" class="callout-inner">
+<h3 class="callout-title">Challenge 3: Extend the script with TDD</h3>
+<div class="callout-content">
+<p>Choose a small feature for the Episode 3 script, such as a new
+command-line option or an additional summary statistic. Write a failing
+test first, implement the feature to make the test pass, and then
+refactor if needed.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div class="accordion-body">
+<p>A solid TDD loop includes: 1. writing a test that captures the new
+behavior, 2. implementing the smallest change that makes the test pass,
+and 3. cleaning up the code while re-running the test suite to confirm
+nothing regresses.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="refactoring-code">Refactoring code<a class="anchor" aria-label="anchor" href="#refactoring-code"></a></h2>
+<hr class="half-width"><div class="section level3 {discussion}">
+<h3 id="why-modular-development-matters-even-more-with-ai">Why modular development matters even more with AI<a class="anchor" aria-label="anchor" href="#why-modular-development-matters-even-more-with-ai"></a></h3>
+<p>When you generate code in small, testable pieces:</p>
+<ul><li>You can verify each piece works before moving on</li>
+<li>Errors are easier to localize and fix</li>
+<li>You maintain understanding of what each part does</li>
+<li>The AI has clearer context for each request</li>
+</ul></div>
+<div class="section level3">
+<h3 id="refactor-without-breaking-behavior">Refactor without breaking behavior<a class="anchor" aria-label="anchor" href="#refactor-without-breaking-behavior"></a></h3>
+<p>Refactoring is safest when you make one small change at a time and
+keep the tests passing. Break the script into small functions, then into
+modules if needed, and run the test suite after every change.</p>
+<div id="challenge-4-refactor-with-confidence" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-4-refactor-with-confidence" class="callout-inner">
+<h3 class="callout-title">Challenge 4: Refactor with confidence</h3>
+<div class="callout-content">
+<p>Split one large function or block of the Episode 3 script into two or
+more functions. After each small change, run the tests and fix any
+failures before moving on.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div class="accordion-body">
+<p>A common approach is to extract pure functions first, then move I/O
+into a thin wrapper. If the tests stay green at each step, the refactor
+preserved behavior.</p>
+</div>
+</div>
+</div>
+</div>
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></p>
+ -->
+</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter Bottom"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/3_writing_validate_scripts.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
@@ -461,8 +618,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/software-development-with-genai/instructor/4_refactoring_testing_scripts.html",
   "identifier": "https://carpentries-incubator.github.io/software-development-with-genai/instructor/4_refactoring_testing_scripts.html",
   "dateCreated": "2026-02-05",
-  "dateModified": "2026-05-09",
-  "datePublished": "2026-11-03"
+  "dateModified": "2026-11-04",
+  "datePublished": "2026-11-04"
 }
 
   </script><script>
