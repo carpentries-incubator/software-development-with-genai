@@ -14,7 +14,7 @@ A study also conducted by the Institute also found an exponential increase in th
 As a specific institutional example, when researchers were asked "how important is research software to your work?" in a software study conducted at the University of Southampton, 73% of respondents indicated that it was "Vital".
 
 For many researchers, writing code for data analysis or software development can be boring, frustrating, or intimidating. 
-Most researchers would rather be thinking about and researching their subject matter rather than spending lots of time learning a programming language and writing code.
+Most researchers would rather be thinking about and researching their subject matter than spending lots of time learning a programming language and writing code.
 Therefore, with easy access to AI tools, it can be very tempting to ask AI to write your research code for you.
 
 ![Artwork by @allison_horst, CC-BY](fig/i_would_rather_not_behold.png){alt='Cartoon of an instructor gesturing enthusiastically to a screen full of R documentation saying "BEHOLD! An amazing function!" A skeptical looking student looks on, saying "I would rather not behold...'}
@@ -53,7 +53,7 @@ This lesson is divided into five content episodes which focus on the skills that
 
 In a study of 868 scientists who code as part of their research, ChatGPT was by far the most common tool used to assist with research coding, used by 64% of participants, followed by GitHub Copilot, used by 12% of participants. 
 
-*(O'Brien, G., Parker, A., Eisty, N., & Carver, J. (2025). More code, less validation: Risk factors for over-reliance on AI coding tools among scientists. arXiv preprint arXiv:2512.19644.)*
+*(O'Brien, G., Parker, A., Eisty, N., & Carver, J. (2025). A survey of generative AI adoption and perceived productivity among scientists who program. arXiv preprint arXiv:2512.19644.)*
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
