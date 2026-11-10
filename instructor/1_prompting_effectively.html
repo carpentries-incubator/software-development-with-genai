@@ -219,6 +219,10 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-clear-framework">The CLEAR framework</a></li>
+<li><a href="#introspection">Introspection</a></li>
+<li><a href="#prompt-patterns---plan-before-you-act">Prompt patterns - Plan before you act</a></li>
+<li><a href="#concrete-examples-from-bad-to-good">Concrete examples: From bad to good</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -351,7 +355,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Prompting effectively</h1>
-        <p>Last updated on 2026-05-09 |
+        <p>Last updated on 2026-11-10 |
 
         <a href="https://github.com/carpentries-incubator/software-development-with-genai/edit/main/episodes/1_prompting_effectively.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -372,8 +376,8 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do you write a lesson using Markdown and
-<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+<ul><li>How does implementing prompting strategies affect the result for
+research code?</li>
 </ul></div>
 </div>
 </div>
@@ -384,107 +388,501 @@
 <ul><li>Apply the CLEAR framework for effective prompting.</li>
 <li>Apply introspection to refine code.</li>
 <li>Employ prompt design patterns</li>
-<li>Recognise common generative AI failures</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"><p>Prompt design patterns.</p>
-<!-- This is a lesson created via The Carpentries Workbench. It is written in
-[Pandoc-flavored Markdown](https://pandoc.org/MANUAL.html) for static files and
-[R Markdown][r-markdown] for dynamic files that can render code into output.
-Please refer to the [Introduction to The Carpentries
-Workbench](https://carpentries.github.io/sandpaper-docs/) for full documentation.
+<hr class="half-width"><p>Helen has received the code and datasets from her colleague, and he
+has mentioned that his code should be able to run with the three
+provided datasets. She is aware that the provided code should generate a
+plot for each dataset.</p>
+<div id="challenge-1-prompt-as-usual" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-1-prompt-as-usual" class="callout-inner">
+<h3 class="callout-title">Challenge 1: Prompt as usual</h3>
+<div class="callout-content">
+<p>Write and execute a prompt for running the code in all the
+datasets.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Output </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
+<p>A possible prompt is:</p>
+<pre class="text"><code>Hey, I have this code "code.py" and two datasets "data1.csv" and "data2.csv", please write the code to run the code in each dataset.</code></pre>
+<p>Notice that you can communicate the same intention in many other
+ways. Similarly, because the response of these models is not
+deterministic, you will receive different results even if you use the
+same prompt in the same model! In our case, using ChatGPT on May 10th,
+2026, we received this answer:</p>
+<blockquote>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="co"># List of datasets</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a>datasets <span class="op">=</span> [<span class="st">"data1.csv"</span>, <span class="st">"data2.csv"</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a><span class="co"># Run code.py for each dataset</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a><span class="cf">for</span> dataset <span class="kw">in</span> datasets:</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1" aria-label="code-block-2-8"></a>   <span class="bu">print</span>(<span class="ss">f"Running code.py with </span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">..."</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1" aria-label="code-block-2-9"></a>   </span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1" aria-label="code-block-2-10"></a>   subprocess.run(</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1" aria-label="code-block-2-11"></a>       [<span class="st">"python"</span>, <span class="st">"code.py"</span>, dataset],</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1" aria-label="code-block-2-12"></a>       check<span class="op">=</span><span class="va">True</span></span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1" aria-label="code-block-2-13"></a>   )</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1" aria-label="code-block-2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1" aria-label="code-block-2-15"></a><span class="bu">print</span>(<span class="st">"All datasets processed."</span>)</span></code></pre>
+</div>
+<p><em>This assumes that <code>code.py</code> accepts the dataset
+filename as a command-line argument, for example:</em></p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="co"># inside code.py</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="im">import</span> sys</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a>dataset_path <span class="op">=</span> sys.argv[<span class="dv">1</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1" aria-label="code-block-3-6"></a><span class="bu">print</span>(<span class="ss">f"Processing </span><span class="sc">{</span>dataset_path<span class="sc">}</span><span class="ss">"</span>)</span></code></pre>
+</div>
+<p><em>You can run the launcher script with:</em></p>
+</blockquote>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1" aria-label="code-block-4-1"></a><span class="ex">python</span> run_all.py</span></code></pre>
+</div>
+<p>Notice that in the original prompt, we wrote “… write the code to run
+the code…”, while this is a way of doing it, it already primed the
+generative model to write a script to write the original code three
+times.</p>
+<p>A small tweak in the prompt can set the model into writing a simpler
+approach.</p>
+<p>Prompt:</p>
+<pre class="text"><code>Hey, I have this code "code.py" and three datasets "data1.csv", "data2.csv", and "data3.csv", please help me execute the code in each dataset.</code></pre>
+<p>AI Response:</p>
+<blockquote>
+<p><em>If <code>code.py</code> accepts a dataset file as an argument,
+the simplest way is usually:</em></p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a><span class="ex">python</span> code.py data1.csv</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a><span class="ex">python</span> code.py data2.csv</span></code></pre>
+</div>
+<p><em>Or automate it with a small shell loop:</em></p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a><span class="cf">for</span> file <span class="kw">in</span> data1.csv data2.csv</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="cf">do</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a>    <span class="ex">python</span> code.py <span class="st">"</span><span class="va">$file</span><span class="st">"</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1" aria-label="code-block-7-4"></a><span class="cf">done</span></span></code></pre>
+</div>
+<p><em>If your <code>code.py</code> instead expects named arguments, it
+could look like:</em></p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="ex">python</span> code.py <span class="at">--input</span> data1.csv</span></code></pre>
+</div>
+<p><em>in which case the loop becomes:</em></p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="cf">for</span> file <span class="kw">in</span> data1.csv data2.csv </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="cf">do</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1" aria-label="code-block-9-3"></a>    <span class="ex">python</span> code.py <span class="at">--input</span> <span class="st">"</span><span class="va">$file</span><span class="st">"</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1" aria-label="code-block-9-4"></a><span class="cf">done</span></span></code></pre>
+</div>
+<p><em>You can also do it directly inside Python:</em></p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a>datasets <span class="op">=</span> [<span class="st">"data1.csv"</span>, <span class="st">"data2.csv"</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1" aria-label="code-block-10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1" aria-label="code-block-10-5"></a><span class="cf">for</span> dataset <span class="kw">in</span> datasets:</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1" aria-label="code-block-10-6"></a>    subprocess.run([<span class="st">"python"</span>, <span class="st">"code.py"</span>, dataset])</span></code></pre>
+</div>
+<p><em>If you paste the contents of <code>code.py</code>, I can give you
+the exact command for your specific script.</em></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<p>Notice that the response of the LLM usually finishes by asking for
+more context, as you continue the conversation it can better tailor its
+responses, as we will see now with the CLEAR framework.</p>
+<div id="discussion1" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>In groups of three, talk about how you usually prompt.</p>
+<ul><li>What works for you? What errors or mistakes have you caught?</li>
+<li>Did the model’s response improve?</li>
+</ul></div>
+</div>
+</div>
+<div id="writing-good-chat-prompts" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="writing-good-chat-prompts" class="callout-inner">
+<h3 class="callout-title">Writing Good Chat Prompts</h3>
+<div class="callout-content">
+<p>AI tools work best with context, so it’s good to be as specific and
+concise as possible.</p>
+<p>It’s also a good idea to provide simple questions, so if you end up
+with a large question that is decomposable into separate steps, ask each
+step separately and you’ll typically get a better outcome. This implies
+that it’s good to use a logical, iterative process of using AI to
+assist, using responses to simple questions to inform the next question,
+and so on.</p>
+<p>There’s a very useful cheat sheet developed by Northwestern
+University (US) Research Computing and Data Services, which can be found
+in their <a href="https://github.com/nuitrcs/promptEngineering" class="external-link">GitHub
+promptEngineering repository</a>.</p>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="the-clear-framework">The CLEAR framework<a class="anchor" aria-label="anchor" href="#the-clear-framework"></a></h2>
+<hr class="half-width"><p>The CLEAR framework, developed by <a href="https://doi.org/10.1016/j.acalib.2023.102720" class="external-link">Leo Lo</a>, provides
+a structured approach to prompt engineering:</p>
+<pre class="mermaid"><code>graph LR
+    C[Concise] --&gt; L[Logical]
+    L --&gt; E[Explicit]
+    E --&gt; A[Adaptive]
+    A --&gt; R[Reflective]
+    R --&gt;|Feedback Loop| A
+    style R fill:#bbf,stroke:#333,stroke-width:2px</code></pre>
+<p>Effective prompts are concise and logical, prioritizing important
+information and following a sequence of steps. They are also explicit,
+specifying the scope, persona, and tone of the output. When the AI
+produces poor results, be adaptive by rephrasing or splitting tasks.
+Finally, be reflective—evaluate the output and verify facts using other
+sources rather than trusting the response.</p>
+<p>The quality of AI-generated code depends heavily on how you ask for
+it.</p>
+<div id="challenge-2-rewrite-the-prompt" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-2-rewrite-the-prompt" class="callout-inner">
+<h3 class="callout-title">Challenge 2: Rewrite the prompt</h3>
+<div class="callout-content">
+<p>Rewrite the prompt using the CLEAR framework, execute the refined
+prompt, and compare the model’s response with its previous version.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
+<p>A possible new prompt is as follows. We added the CLEAR framework
+stamps for emphasizing its use, but these are not necessary in the final
+prompt. Prompt:</p>
+<pre class="text"><code>[C] Concise:
+I have a Python script, `code.py`, and two datasets:
+`co2_per_capita.csv` and `gdp_per_capita.csv`.
 
-What you need to know is that there are three sections required for a valid
-Carpentries lesson:
+[L] Logical:
+I want to execute the code for each dataset.
 
- 1. `questions` are displayed at the beginning of the episode to prime the
-    learner for the content.
- 2. `objectives` are the learning objectives for an episode displayed with
-    the questions.
- 3. `keypoints` are displayed at the end of the episode to reinforce the
-    objectives.
+[E] Explicit:
+My colleague said that `code.py` accepts the dataset path as an argument.
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+Use a beginner-friendly explanation.
 
-Inline instructor notes can help inform instructors of timing challenges
-associated with the lessons. They appear in the "Instructor View"
-
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: challenge
-
-## Challenge 1: Can you do it?
-
-What is the output of this command?
-
-```r
-paste("This", "new", "lesson", "looks", "good")
-```
-
-:::::::::::::::::::::::: solution
-
-## Output
-
-```output
-[1] "This new lesson looks good"
-```
-
-:::::::::::::::::::::::::::::::::
-
-
-## Challenge 2: how do you nest solutions within challenge blocks?
-
-:::::::::::::::::::::::: solution
-
-You can add a line with at least three colons and a `solution` tag.
-
-:::::::::::::::::::::::::::::::::
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Figures
-
-You can use standard markdown for static figures with the following syntax:
-
-`![optional caption that appears below the figure](figure url){alt='alt text for
-accessibility purposes'}`
-
-![You belong in The Carpentries!](https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg){alt='Blue Carpentries hex person logo with no text.'}
-
-::::::::::::::::::::::::::::::::::::: callout
-
-Callout sections can highlight information.
-
-They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present "asides":
-content that is not central to the narrative of the lesson,
-e.g. by providing the answer to a commonly-asked question.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-## Math
-
-One of our episodes contains $\LaTeX$ equations when describing how to create
-dynamic reports with {knitr}, so we now use mathjax to describe this:
-
-`$\alpha = \dfrac{1}{(1 - \beta)^2}$` becomes: $\alpha = \dfrac{1}{(1 - \beta)^2}$
-
-Cool, right?
-
-::::::::::::::::::::::::::::::::::::: keypoints
-
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-[r-markdown]: https://rmarkdown.rstudio.com/ -->
+[A] Adaptive:
+If there is a more scalable or maintainable approach for handling many datasets, include it as an alternative and explain when it would be preferable.
+</code></pre>
+<p>[R] Reflective:</p>
+<p>(Wait for the answer and evaluate its output. Check other sources if
+necessary or refine your prompt and try again.)</p>
+<div class="section level3">
+<h3 id="reflection">Reflection<a class="anchor" aria-label="anchor" href="#reflection"></a></h3>
+<ul><li>How much longer was your refined prompt compared to your first
+one?</li>
+<li>How much time does it take to write the prompt in comparison to
+implementing the solution if you know it?</li>
+</ul><p>This serves as illustration of the CLEAR framework, but you will
+tailor your prompts according to your experience and the complexity of
+your task.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="challenge-3-minimal-change-prompt" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-3-minimal-change-prompt" class="callout-inner">
+<h3 class="callout-title">Challenge 3: Minimal-change prompt</h3>
+<div class="callout-content">
+<p>Take your refined prompt from Challenge 2 and make the smallest
+possible change so the model now produces a script that combines
+multiple CSVs and plots the combined data (e.g., merge CO2 and GDP by
+country and year, then plot them together). Keep everything else in your
+prompt unchanged.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div class="accordion-body">
+<p>One minimal change is to replace the “run for each dataset” line with
+a “combine and plot” line:</p>
+<pre class="text"><code>[L] Logical:
+I want to load both datasets, merge them by country and year, and plot the combined data in one
+figure.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="introspection">Introspection<a class="anchor" aria-label="anchor" href="#introspection"></a></h2>
+<hr class="half-width"><p>The CLEAR framework guides your input, but you can also force the AI
+to critique its own output. This is often called self-correction.</p>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> The introspection concept </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>Emphasize this section. Most learners treat AI output as final. The
+idea that they can ask the AI to fix its own work is often a new
+concept. It is like asking a student, “Are you sure you checked your
+work?”—they often find their own mistakes when asked.</p>
+</div>
+</div>
+</div>
+</div>
+<p>AI models are often better at verifying code than writing it. Never
+accept the first draft. It is often better to use a different model, or
+at least a new chat, for the review so the critique is less influenced
+by the same context that produced the code. Follow up with an
+introspection prompt:</p>
+<ul><li>“Review the code you just wrote. Are there any edge cases or
+security vulnerabilities?”</li>
+<li>“Did you hardcode any file paths?”</li>
+<li>“Critique your own implementation. Is there a more efficient
+way?”</li>
+</ul><div id="challenge-4-the-introspection-loop" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-4-the-introspection-loop" class="callout-inner">
+<h3 class="callout-title">Challenge 4: The introspection loop</h3>
+<div class="callout-content">
+<p>Test the AI as a verifier principle. Ask the AI to find flaws in its
+code before you run it.</p>
+<ol style="list-style-type: decimal"><li>
+<strong>Generate a script</strong> — enter this prompt in your
+chat</li>
+</ol><pre class="text"><code>    Write a script that reads 'gdp_per_capita.csv' and generates a timeseries of the 10 years rolling average for a country that is passed as argument in the terminal. Handle missing values.</code></pre>
+<ol start="2" style="list-style-type: decimal"><li>
+<strong>Force introspection:</strong> Once the code is generated, do
+not run it. Follow up in the same session:</li>
+</ol><pre class="text"><code>    Review the script you just wrote. Are there any edge cases (like having fewer than 10 years of consecutive data) where this would fail? If so, provide an updated version.</code></pre>
+<ol start="3" style="list-style-type: decimal"><li>
+<strong>Compare:</strong> Did the AI find a mistake in its first
+draft? Did it add a correction?</li>
+</ol></div>
+</div>
+</div>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div class="accordion-body">
+<p>AI models are often more accurate when asked to critique logic than
+when asked to generate it. This second pass is part of the editor
+mindset and reduces manual debugging, but it does not replace a human
+checking the code to make sure it does the right thing.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="prompt-patterns---plan-before-you-act">Prompt patterns - Plan before you act<a class="anchor" aria-label="anchor" href="#prompt-patterns---plan-before-you-act"></a></h2>
+<hr class="half-width"><p>As tasks grow more complex, asking the model to write code
+immediately leads to more rewrite time. The emerging best practice is to
+request a plan first, review it, and approve it before any files are
+written.</p>
+<div class="section level3">
+<h3 id="the-think-then-do-pattern">The think-then-do pattern<a class="anchor" aria-label="anchor" href="#the-think-then-do-pattern"></a></h3>
+<p>Start any multi-step task with an explicit planning prompt:</p>
+<pre class="text"><code>Before writing any code, describe your approach in numbered steps. Do not write any files yet.</code></pre>
+<p>Review the plan, push back on steps you disagree with, and ask for
+alternatives. Once you are satisfied, say “proceed with step 1.”</p>
+</div>
+<div class="section level3">
+<h3 id="checkpoint-prompts">Checkpoint prompts<a class="anchor" aria-label="anchor" href="#checkpoint-prompts"></a></h3>
+<p>Break large tasks into explicit phases so you review the output at
+each stage before moving forward:</p>
+<pre class="text"><code>Step 1 only: read the three CSV files and tell me what inconsistencies you find. Do not write any code yet.</code></pre>
+<p>This is especially valuable in research because it catches
+misunderstandings about your data before they propagate into broken
+code.</p>
+</div>
+<div class="section level3">
+<h3 id="the-plan-file">The plan file<a class="anchor" aria-label="anchor" href="#the-plan-file"></a></h3>
+<p>For complex projects, ask the model to write a <code>PLAN.md</code>
+first:</p>
+<pre class="text"><code>Write a PLAN.md outlining the steps to clean and merge these files. I will review and edit it before you write any code.</code></pre>
+<p>This makes the plan a reviewable, editable artifact — a more formal
+version of the Bootstrap Workflow. Once approved, refer back to it in
+follow-up prompts: “Proceed with step 2 from PLAN.md.”</p>
+<div id="challenge-plan-before-you-clean" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-plan-before-you-clean" class="callout-inner">
+<h3 class="callout-title">Challenge: Plan before you clean</h3>
+<div class="callout-content">
+<p>Practice the think-then-do pattern before moving on to the code
+cleaning episode. Inside your chat session, type:</p>
+<pre class="text"><code>I have a script without comments, consistent variable names, and information for the plots it generates. Before writing any code, outline a step-by-step plan for cleaning this file. Do not write any code yet.</code></pre>
+<p>Review the plan. Does it include an audit step? Does it address
+missing values? Revise the plan in the conversation until you are
+satisfied, then save it by asking: “Write this plan to PLAN.md.”</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> What a good plan could include </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div class="accordion-body">
+<ul><li>An audit step — inspect files before changing them</li>
+<li>A re naming of variables</li>
+<li>A documentation step</li>
+<li>A missing value strategy</li>
+<li>An output verification step</li>
+</ul><p>If the model skipped any of these, ask it to revise before you
+proceed. The goal is to catch gaps in the plan, not in the code.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="challenge-plan-ownership-reflection" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="challenge-plan-ownership-reflection" class="callout-inner">
+<h3 class="callout-title">Challenge: Plan ownership reflection</h3>
+<div class="callout-content">
+<p>Write a short reflection (3-5 sentences) on your responsibility when
+asking a model to plan. Use these prompts:</p>
+<ul><li>What domain knowledge do you need to judge whether a plan is
+reasonable?</li>
+<li>What parts of the plan would you <em>not</em> be able to critique
+without that knowledge?</li>
+<li>How would you verify or fill those gaps before letting the model
+implement the plan?</li>
+</ul></div>
+</div>
+</div>
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6"> One possible reflection </h4>
+</button>
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div class="accordion-body">
+<p>I need enough domain knowledge to judge whether the steps are valid
+and complete. Without that knowledge, I would not know if the plan skips
+a critical audit step or uses the wrong data assumptions. Before
+implementation, I should consult documentation, run small checks, or ask
+a subject expert so I can meaningfully critique the plan and adjust
+it.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="callout2" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>There are more patterns that can be used to guide LLMs. See <a href="https://arxiv.org/pdf/2302.11382" class="external-link">Prompt Pattern Catalog to
+Enhance Prompt Engineering</a></p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="concrete-examples-from-bad-to-good">Concrete examples: From bad to good<a class="anchor" aria-label="anchor" href="#concrete-examples-from-bad-to-good"></a></h2>
+<hr class="half-width"><table class="table"><colgroup><col width="33%"><col width="33%"><col width="33%"></colgroup><thead><tr><th align="left">Aspect</th>
+<th align="left">Bad prompt</th>
+<th align="left">Good prompt</th>
+</tr></thead><tbody><tr><td align="left">Vague vs specific</td>
+<td align="left">“Clean this data.”</td>
+<td align="left">“In <code>data.csv</code>, remove rows with missing
+values in the ‘age’ column and save as
+<code>clean_data.csv</code>.”</td>
+</tr><tr><td align="left">No context vs context</td>
+<td align="left">“Write a plot script.”</td>
+<td align="left">“I am building a report for a climate study. Write a
+Python script using seaborn to create a line plot of ‘temp’ over ‘year’
+from <code>results.csv</code>.”</td>
+</tr><tr><td align="left">Silent vs validated</td>
+<td align="left">“Run a t-test.”</td>
+<td align="left">“Perform a paired t-test between ‘pre’ and ‘post’
+columns. Print the t-statistic, p-value, and an interpretation of the
+result at alpha=0.05.”</td>
+</tr></tbody></table><div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul><li>Be specific and provide context.</li>
+<li>The better your prompt, the better the result you will obtain.</li>
+<li>Introspection improves code quality.</li>
+<li>Plan before you act: request a numbered plan and approve it before
+any files are written.</li>
+</ul></div>
+</div>
+</div>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -549,8 +947,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/software-development-with-genai/instructor/1_prompting_effectively.html",
   "identifier": "https://carpentries-incubator.github.io/software-development-with-genai/instructor/1_prompting_effectively.html",
   "dateCreated": "2026-02-05",
-  "dateModified": "2026-05-09",
-  "datePublished": "2026-11-04"
+  "dateModified": "2026-11-10",
+  "datePublished": "2026-11-10"
 }
 
   </script><script>
